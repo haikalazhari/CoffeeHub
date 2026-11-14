@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.StockController"
+            style="-fx-background-color: #F5EFE6;">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="30" right="35" bottom="20" left="35"/>
+            </padding>
+
+            <Label text="Stock Management"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+            <Label text="Monitor and manage your product inventory"
+                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+            <padding>
+                <Insets top="10" right="35" bottom="30" left="35"/>
+            </padding>
+
+            <GridPane hgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.34"/>
+                </columnConstraints>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="0">
+
+                    <Label text="Total Products"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="totalProductsLabel"
+                           text="0"
+                           style="-fx-text-fill: #5C3825; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="1">
+
+                    <Label text="Low Stock"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="lowStockLabel"
+                           text="0"
+                           style="-fx-text-fill: #C28A35; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="2">
+
+                    <Label text="Out of Stock"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="outOfStockLabel"
+                           text="0"
+                           style="-fx-text-fill: #A65345; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+            </GridPane>
+
+            <Label text="Inventory List"
+                   style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+            <TableView fx:id="stockTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-radius: 8;">
+
+                <columns>
+                    <TableColumn fx:id="idColumn"
+                                 text="ID"
+                                 prefWidth="55"/>
+
+                    <TableColumn fx:id="nameColumn"
+                                 text="Product Name"
+                                 prefWidth="180"/>
+
+                    <TableColumn fx:id="categoryColumn"
+                                 text="Category"
+                                 prefWidth="140"/>
+
+                    <TableColumn fx:id="stockColumn"
+                                 text="Current Stock"
+                                 prefWidth="110"/>
+
+                    <TableColumn fx:id="statusColumn"
+                                 text="Stock Status"
+                                 prefWidth="120"/>
+
+                    <TableColumn fx:id="actionColumn"
+                                 text="Action"
+                                 prefWidth="130"/>
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

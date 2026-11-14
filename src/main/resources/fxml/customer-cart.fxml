@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx/27"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.voidsyntax.coffeehub.controller.CustomerCartController"
+      spacing="20"
+      style="-fx-background-color: #F7F1E8;">
+
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35"/>
+    </padding>
+
+    <VBox spacing="5">
+        <Label text="Shopping Cart"
+               style="-fx-font-size: 28px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #493629;"/>
+
+        <Label text="Review and manage your selected products."
+               style="-fx-font-size: 14px;
+                      -fx-text-fill: #8B7562;"/>
+    </VBox>
+
+    <HBox spacing="20" alignment="TOP_LEFT">
+
+        <VBox spacing="15"
+              HBox.hgrow="ALWAYS"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 12;
+                     -fx-padding: 25;">
+
+            <Label text="Cart Items"
+                   style="-fx-font-size: 19px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #493629;"/>
+
+            <VBox fx:id="cartItemsContainer"
+                  spacing="15"/>
+
+        </VBox>
+
+        <VBox spacing="18"
+              prefWidth="250"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 12;
+                     -fx-padding: 22;">
+
+            <Label text="Order Summary"
+                   style="-fx-font-size: 19px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #493629;"/>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Total Items"
+                       style="-fx-text-fill: #8B7562;"/>
+
+                <HBox HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="itemCountLabel"
+                       text="0 item"
+                       style="-fx-font-weight: bold;
+                              -fx-text-fill: #493629;"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Total Price"
+                       style="-fx-text-fill: #8B7562;"/>
+
+                <HBox HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="totalLabel"
+                       text="Rp0"
+                       style="-fx-font-size: 17px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #795548;"/>
+            </HBox>
+
+            <Label text="Payment Method: Cash"
+                   style="-fx-font-size: 12px;
+                          -fx-text-fill: #8B7562;"/>
+
+              <Button text="Proceed to Checkout"
+                     onAction="#handleCheckout"
+                     maxWidth="Infinity"
+                     style="-fx-background-color: #795548;
+                            -fx-text-fill: white;
+                            -fx-font-size: 14px;
+                            -fx-font-weight: bold;
+                            -fx-background-radius: 8;
+                            -fx-padding: 12;
+                            -fx-cursor: hand;"/>
+
+        </VBox>
+
+    </HBox>
+
+</VBox>

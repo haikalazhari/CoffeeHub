@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.ProductsController"
+            style="-fx-background-color: #F5EFE6;">
+
+    <top>
+        <VBox spacing="8" BorderPane.alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="30" right="35" bottom="20" left="35"/>
+            </padding>
+
+            <Label text="Products"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+            <Label text="Manage your coffee shop products"
+                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+            <padding>
+                <Insets top="10" right="35" bottom="30" left="35"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Product List"
+                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="+ Add Product"
+                        onAction="#handleAddProduct"
+                        style="-fx-background-color: #8B6048; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 7; -fx-padding: 10 18;"/>
+            </HBox>
+
+            <TableView fx:id="productTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-radius: 8;">
+
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="45"/>
+                    <TableColumn fx:id="nameColumn" text="Product Name" prefWidth="150"/>
+                    <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="110"/>
+                    <TableColumn fx:id="stockColumn" text="Stock" prefWidth="70"/>
+                    <TableColumn fx:id="availabilityColumn" text="Availability" prefWidth="100"/>
+                    <TableColumn fx:id="actionColumn"
+                        text="Action"
+                        prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

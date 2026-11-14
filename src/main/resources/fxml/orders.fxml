@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.OrdersController"
+            style="-fx-background-color: #F5EFE6;">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="30" right="35" bottom="20" left="35"/>
+            </padding>
+
+            <Label text="Order Management"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+            <Label text="Manage customer orders and cash payments"
+                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+            <padding>
+                <Insets top="10" right="35" bottom="30" left="35"/>
+            </padding>
+
+            <GridPane hgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.34"/>
+                </columnConstraints>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="0">
+
+                    <Label text="Total Orders"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="totalOrdersLabel"
+                           text="0"
+                           style="-fx-text-fill: #5C3825; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="1">
+
+                    <Label text="Pending Orders"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="pendingOrdersLabel"
+                           text="0"
+                           style="-fx-text-fill: #C28A35; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <VBox spacing="8"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      GridPane.columnIndex="2">
+
+                    <Label text="Completed Orders"
+                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+
+                    <Label fx:id="completedOrdersLabel"
+                           text="0"
+                           style="-fx-text-fill: #6A8B63; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                </VBox>
+            </GridPane>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Order List"
+                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="Refresh"
+                        onAction="#handleRefresh"
+                        style="-fx-background-color: #D8C7B8; -fx-text-fill: #5C3825; -fx-background-radius: 7; -fx-padding: 9 18;"/>
+            </HBox>
+
+            <TableView fx:id="orderTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-radius: 8;">
+
+                <columns>
+                    <TableColumn fx:id="idColumn"
+                                 text="ID"
+                                 prefWidth="45"/>
+
+                    <TableColumn fx:id="codeColumn"
+                                 text="Order Code"
+                                 prefWidth="115"/>
+
+                    <TableColumn fx:id="customerColumn"
+                                 text="Customer"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="dateColumn"
+                                 text="Order Date"
+                                 prefWidth="140"/>
+
+                    <TableColumn fx:id="totalColumn"
+                                 text="Total Amount"
+                                 prefWidth="115"/>
+
+                    <TableColumn fx:id="paymentColumn"
+                                 text="Payment"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="statusColumn"
+                                 text="Order Status"
+                                 prefWidth="115"/>
+
+                    <TableColumn fx:id="actionColumn"
+                                 text="Action"
+                                 prefWidth="180"/>
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

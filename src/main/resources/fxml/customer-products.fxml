@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/27"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.voidsyntax.coffeehub.controller.CustomerProductsController"
+      spacing="20"
+      style="-fx-background-color: #F7F1E8;">
+
+    <padding>
+        <Insets top="30" right="35" bottom="30" left="35"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <VBox spacing="5">
+            <Label text="Products"
+                   style="-fx-font-size: 28px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #493629;"/>
+
+            <Label text="Explore our coffee and beverage selections."
+                   style="-fx-font-size: 14px;
+                          -fx-text-fill: #8B7562;"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="15"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 12;
+                 -fx-padding: 25;">
+
+        <Label text="Available Products"
+               style="-fx-font-size: 19px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #493629;"/>
+
+        <FlowPane hgap="15"
+                  vgap="15"
+                  prefWrapLength="750">
+
+            <VBox fx:id="productsContainer"
+                  spacing="15"
+                  prefWidth="750"/>
+
+        </FlowPane>
+
+    </VBox>
+
+</VBox>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.AdminController"
+            prefWidth="1200" prefHeight="780"
+            style="-fx-background-color: #F7F1E8;">
+
+    <left>
+        <VBox spacing="18" prefWidth="260" minWidth="245"
+              style="-fx-background-color: linear-gradient(to bottom, #56301F, #3F241A);">
+            <padding><Insets top="24" right="20" bottom="22" left="20"/></padding>
+
+            <VBox alignment="CENTER" spacing="5">
+                <ImageView fitWidth="76" fitHeight="76" preserveRatio="true">
+                    <image><Image url="@../images/coffeehub-logo.png"/></image>
+                </ImageView>
+                <Label text="CoffeeHub" style="-fx-font-size: 29px; -fx-font-weight: bold; -fx-text-fill: #FFF8ED;"/>
+                <Region prefHeight="3" maxHeight="3" prefWidth="150"
+                        style="-fx-background-color: #C58B55; -fx-background-radius: 5;"/>
+                <Label text="ADMIN PANEL" style="-fx-font-size: 12px; -fx-text-fill: #D9BDA4;"/>
+            </VBox>
+
+            <Region prefHeight="12"/>
+
+            <Button fx:id="dashboardButton" text="Dashboard" onAction="#handleDashboard"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: #8A5A3D; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="23" fitHeight="23" preserveRatio="true"><image><Image url="@../images/icon-home-white.png"/></image></ImageView></graphic>
+            </Button>
+            <Button fx:id="productsButton" text="Products" onAction="#handleProducts"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFF8ED; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="23" fitHeight="23" preserveRatio="true"><image><Image url="@../images/icon-coffee-white.png"/></image></ImageView></graphic>
+            </Button>
+            <Button fx:id="categoriesButton" text="Categories" onAction="#handleCategories"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFF8ED; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="23" fitHeight="23" preserveRatio="true"><image><Image url="@../images/icon-layers-white.png"/></image></ImageView></graphic>
+            </Button>
+            <Button fx:id="stockButton" text="Stock Management" onAction="#handleStock"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFF8ED; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="23" fitHeight="23" preserveRatio="true"><image><Image url="@../images/icon-box-white.png"/></image></ImageView></graphic>
+            </Button>
+            <Button fx:id="ordersButton" text="Orders" onAction="#handleOrders"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFF8ED; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="23" fitHeight="23" preserveRatio="true"><image><Image url="@../images/icon-receipt-white.png"/></image></ImageView></graphic>
+            </Button>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout" onAction="#handleLogout" maxWidth="Infinity" prefHeight="54"
+                    style="-fx-background-color: #B96550; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand;">
+                <graphic><ImageView fitWidth="22" fitHeight="22" preserveRatio="true"><image><Image url="@../images/icon-logout-white.png"/></image></ImageView></graphic>
+            </Button>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea">
+            <VBox spacing="28">
+                <padding><Insets top="38" right="42" bottom="38" left="42"/></padding>
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <VBox spacing="5">
+                        <Label text="Dashboard" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                        <Label text="Welcome to CoffeeHub Admin Panel" style="-fx-font-size: 15px; -fx-text-fill: #9A7A63;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="adminNameLabel" text="Administrator" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                </HBox>
+
+                <HBox spacing="22" prefHeight="150" fillHeight="true">
+                    <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                          style="-fx-background-color: white; -fx-background-radius: 18;">
+                        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+                        <HBox spacing="18" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="70" prefHeight="70" style="-fx-background-color: #FFF0DA; -fx-background-radius: 18;">
+                                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true"><image><Image url="@../images/icon-box-brown.png"/></image></ImageView>
+                            </StackPane>
+                            <VBox spacing="6">
+                                <Label text="Total Products" style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                                <Label fx:id="totalProductsLabel" text="0" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                          style="-fx-background-color: white; -fx-background-radius: 18;">
+                        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+                        <HBox spacing="18" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="70" prefHeight="70" style="-fx-background-color: #FFF0DA; -fx-background-radius: 18;">
+                                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true"><image><Image url="@../images/icon-layers-brown.png"/></image></ImageView>
+                            </StackPane>
+                            <VBox spacing="6">
+                                <Label text="Total Categories" style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                                <Label fx:id="totalCategoriesLabel" text="0" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                          style="-fx-background-color: white; -fx-background-radius: 18;">
+                        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+                        <HBox spacing="18" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="70" prefHeight="70" style="-fx-background-color: #FFF0DA; -fx-background-radius: 18;">
+                                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true"><image><Image url="@../images/icon-receipt-brown.png"/></image></ImageView>
+                            </StackPane>
+                            <VBox spacing="6">
+                                <Label text="Total Orders" style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                                <Label fx:id="totalOrdersLabel" text="0" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="28"
+                      style="-fx-background-color: white; -fx-background-radius: 18;">
+                    <padding><Insets top="28" right="34" bottom="28" left="34"/></padding>
+                    <ImageView fitWidth="145" fitHeight="145" preserveRatio="true">
+                        <image><Image url="@../images/coffeehub-logo.png"/></image>
+                    </ImageView>
+                    <Region prefWidth="2" maxWidth="2" prefHeight="100" style="-fx-background-color: #E9DCCF;"/>
+                    <VBox spacing="12">
+                        <Label text="Welcome to CoffeeHub!" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                        <Label text="Manage your coffee shop products, categories, inventory, and customer orders from one place."
+                               wrapText="true" style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

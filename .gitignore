@@ -1,0 +1,34 @@
+# Maven build output
+target/
+
+# Local database configuration (DO NOT UPLOAD)
+database.properties
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log
+logs/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Java crash logs
+hs_err_pid*
+
+# Temporary files
+*.tmp
+*.bak
+*~

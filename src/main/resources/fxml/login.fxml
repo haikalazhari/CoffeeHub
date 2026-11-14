@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<VBox xmlns="http://javafx.com/javafx/27" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.voidsyntax.coffeehub.controller.LoginController"
+      alignment="CENTER" spacing="17" style="-fx-background-color: #F7F1E8;"
+      prefWidth="900" prefHeight="600">
+    <padding><Insets top="28" right="40" bottom="28" left="40"/></padding>
+
+    <VBox alignment="CENTER" spacing="5">
+        <ImageView fitWidth="82" fitHeight="82" preserveRatio="true">
+            <image><Image url="@../images/coffeehub-logo.png"/></image>
+        </ImageView>
+        <Label text="CoffeeHub" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Welcome Back!" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Sign in to continue to CoffeeHub" style="-fx-font-size: 13px; -fx-text-fill: #987A64;"/>
+    </VBox>
+
+    <Region prefHeight="3"/>
+    <VBox spacing="9" maxWidth="370" style="-fx-background-color: white; -fx-background-radius: 16;">
+        <padding><Insets top="24" right="26" bottom="24" left="26"/></padding>
+        <Label text="Email" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <TextField fx:id="emailField" promptText="Enter your email" prefHeight="43"
+                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC;"/>
+        <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <PasswordField fx:id="passwordField" promptText="Enter your password" prefHeight="43"
+                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC;"/>
+        <Button text="Sign In" onAction="#handleLogin" maxWidth="Infinity" prefHeight="46"
+                style="-fx-background-color: #70452F; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 9; -fx-cursor: hand;"/>
+        <Label fx:id="messageLabel" text="" wrapText="true" style="-fx-text-fill: #B33A3A;"/>
+    </VBox>
+    <HBox alignment="CENTER" spacing="5">
+        <Label text="Don't have an account?" style="-fx-text-fill: #987A64;"/>
+        <Button text="Register" onAction="#handleRegister"
+                style="-fx-background-color: transparent; -fx-text-fill: #70452F; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.CategoriesController"
+            style="-fx-background-color: #F5EFE6;">
+
+    <top>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="30" right="35" bottom="20" left="35"/>
+            </padding>
+
+            <Label text="Categories"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+            <Label text="Manage your coffee shop product categories"
+                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+            <padding>
+                <Insets top="10" right="35" bottom="30" left="35"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Category List"
+                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="+ Add Category"
+                        onAction="#handleAddCategory"
+                        style="-fx-background-color: #8B6048; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 7; -fx-padding: 10 18;"/>
+            </HBox>
+
+            <TableView fx:id="categoryTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-radius: 8;">
+
+                <columns>
+                    <TableColumn fx:id="idColumn"
+                                 text="ID"
+                                 prefWidth="70"/>
+
+                    <TableColumn fx:id="nameColumn"
+                                 text="Category Name"
+                                 prefWidth="220"/>
+
+                    <TableColumn fx:id="descriptionColumn"
+                                 text="Description"
+                                 prefWidth="350"/>
+
+                    <TableColumn fx:id="actionColumn"
+                                 text="Action"
+                                 prefWidth="150"/>
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>
