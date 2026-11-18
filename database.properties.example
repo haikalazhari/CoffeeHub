@@ -1,0 +1,5 @@
+# CoffeeHub Database Configuration
+
+db.url=jdbc:mariadb://127.0.0.1:3306/coffeehub?sslMode=disable
+db.username=your_username
+db.password=your_password
