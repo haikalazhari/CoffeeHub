@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
+    no_telepon VARCHAR(20) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     role ENUM('ADMIN', 'PELANGGAN')
         NOT NULL DEFAULT 'PELANGGAN',
@@ -112,6 +113,26 @@ CREATE TABLE IF NOT EXISTS order_details (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 ) ENGINE=InnoDB;
+
+-- =====================================================
+-- 6. INITIAL SEED DATA
+-- =====================================================
+
+INSERT INTO categories (id, name, description) VALUES
+(1, 'Coffee', 'Aneka olahan kopi espresso, americano, latte, dan racikan kopi spesial.'),
+(2, 'Non-Coffee', 'Pilihan minuman non-kopi seperti matcha, chocolate, artisan tea, dan varian segar lainnya.'),
+(3, 'Pastry & Bakery', 'Aneka roti, croissant, cake, dan pastry segar pendamping minum kopi.')
+ON DUPLICATE KEY UPDATE name=VALUES(name), description=VALUES(description);
+
+INSERT INTO products (id, category_id, name, description, price, stock, is_available) VALUES
+(1, 1, 'Americano', 'Espresso klasik dengan tambahan air panas berkualitas, menghadirkan aroma kopi yang kuat, crema lembut, dan rasa bersih menyegarkan.', 25000.00, 20, 1),
+(2, 1, 'Caramel Latte', 'Perpaduan espresso mantap, susu segar hangat yang creamy, dan sirup karamel legit dengan sentuhan rasa manis gurih yang memanjakan lidah.', 30000.00, 26, 1),
+(3, 1, 'Aren Latte', 'Kopi susu kekinian favorit dengan racikan espresso pilihan, susu murni lembut, dan manis legit dari gula aren alami yang harum.', 35000.00, 50, 1),
+(4, 2, 'Matcha Latte', 'Matcha murni khas Jepang berpadu dengan susu segar lembut dan manis pas, menyajikan rasa teh hijau otentik yang menenangkan.', 28000.00, 20, 1),
+(5, 2, 'Signature Chocolate', 'Cokelat pekat dark cocoa pilihan dipadukan dengan kelembutan susu murni, menghadirkan cita rasa cokelat intens dan nikmat disajikan dingin maupun hangat.', 26000.00, 25, 1),
+(6, 3, 'Butter Croissant', 'Croissant renyah berlapis dengan aroma butter Prancis yang wangi gurih, tekstur luar renyah (flaky) dan bagian dalam lembut berserat.', 22000.00, 15, 1),
+(7, 3, 'Cinnamon Roll', 'Roti gulung lembut beraroma kayu manis harum dengan lelehan cream cheese glaze gurih manis yang lumer di mulut.', 24000.00, 12, 1)
+ON DUPLICATE KEY UPDATE category_id=VALUES(category_id), name=VALUES(name), description=VALUES(description), price=VALUES(price), stock=VALUES(stock), is_available=VALUES(is_available);
 
 -- =====================================================
 -- END OF DATABASE SCHEMA

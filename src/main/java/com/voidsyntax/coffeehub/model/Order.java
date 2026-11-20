@@ -19,12 +19,21 @@ public class Order implements Identifiable {
     private PaymentMethod paymentMethod;
     private PaymentStatus paymentStatus;
     private OrderStatus orderStatus;
+    private String notes;
     private List<OrderDetail> orderDetails;
 
     public Order(int id, String orderCode, User pelanggan,
                  LocalDateTime orderDate, BigDecimal totalAmount,
                  PaymentMethod paymentMethod, PaymentStatus paymentStatus,
                  OrderStatus orderStatus) {
+
+        this(id, orderCode, pelanggan, orderDate, totalAmount, paymentMethod, paymentStatus, orderStatus, null);
+    }
+
+    public Order(int id, String orderCode, User pelanggan,
+                 LocalDateTime orderDate, BigDecimal totalAmount,
+                 PaymentMethod paymentMethod, PaymentStatus paymentStatus,
+                 OrderStatus orderStatus, String notes) {
 
         this.id = id;
         this.orderCode = orderCode;
@@ -34,6 +43,7 @@ public class Order implements Identifiable {
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
         this.orderStatus = orderStatus;
+        this.notes = notes;
         this.orderDetails = new ArrayList<>();
     }
 
@@ -80,6 +90,14 @@ public class Order implements Identifiable {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public List<OrderDetail> getOrderDetails() {

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,6 +16,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.voidsyntax.coffeehub.controller.CustomerController"
             prefWidth="1200" prefHeight="780"
+            stylesheets="@../css/style.css"
             style="-fx-background-color: #F7F1E8;">
 
     <left>
@@ -80,11 +82,19 @@
                 </graphic>
             </Button>
 
+            <Button fx:id="profileButton" text="Profile" onAction="#handleProfile"
+                    maxWidth="Infinity" prefHeight="52"
+                    style="-fx-background-color: transparent; -fx-text-fill: #FFF8ED; -fx-font-size: 15px; -fx-alignment: CENTER_LEFT; -fx-padding: 0 16 0 16; -fx-cursor: hand; -fx-graphic-text-gap: 14;">
+                <graphic>
+                    <Label text="👤" style="-fx-font-size: 17px; -fx-text-fill: white;"/>
+                </graphic>
+            </Button>
+
             <Region VBox.vgrow="ALWAYS"/>
 
             <Button text="Logout" onAction="#handleLogout"
                     maxWidth="Infinity" prefHeight="54"
-                    style="-fx-background-color: #B96550; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand;">
+                    style="-fx-background-color: #B96550; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-alignment: CENTER_LEFT; -fx-background-radius: 12; -fx-padding: 0 16 0 16; -fx-cursor: hand; -fx-graphic-text-gap: 14;">
                 <graphic>
                     <ImageView fitWidth="22" fitHeight="22" preserveRatio="true">
                         <image><Image url="@../images/icon-logout-white.png"/></image>
@@ -96,92 +106,97 @@
 
     <center>
         <StackPane fx:id="contentArea">
-            <VBox spacing="28">
-                <padding>
-                    <Insets top="38" right="42" bottom="38" left="42"/>
-                </padding>
+            <ScrollPane fitToWidth="true"
+                        hbarPolicy="NEVER"
+                        vbarPolicy="AS_NEEDED"
+                        style="-fx-background: #F7F1E8; -fx-background-color: #F7F1E8; -fx-border-color: transparent; -fx-padding: 0;">
+                <VBox spacing="28" style="-fx-background-color: #F7F1E8;">
+                    <padding>
+                        <Insets top="38" right="42" bottom="38" left="42"/>
+                    </padding>
 
-                <HBox alignment="CENTER_LEFT" spacing="15">
-                    <VBox spacing="5">
-                        <Label text="Dashboard"
-                               style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                        <Label text="Welcome to CoffeeHub Customer Panel"
-                               style="-fx-font-size: 15px; -fx-text-fill: #9A7A63;"/>
-                    </VBox>
-                    <Region HBox.hgrow="ALWAYS"/>
-                    <Label fx:id="customerNameLabel" text="Customer"
-                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                </HBox>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <VBox spacing="5">
+                            <Label text="Dashboard"
+                                   style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                            <Label text="Welcome to CoffeeHub Customer Panel"
+                                   style="-fx-font-size: 15px; -fx-text-fill: #9A7A63;"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="customerNameLabel" text="Customer"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                    </HBox>
 
-                <HBox spacing="22" prefHeight="150" fillHeight="true">
-                    <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                    <HBox spacing="22" prefHeight="150" fillHeight="true">
+                        <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                              style="-fx-background-color: white; -fx-background-radius: 18;">
+                            <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+                            <HBox spacing="18" alignment="CENTER_LEFT">
+                                <StackPane prefWidth="70" prefHeight="70"
+                                           style="-fx-background-color: #FFF0DA; -fx-background-radius: 18;">
+                                    <ImageView fitWidth="38" fitHeight="38" preserveRatio="true">
+                                        <image><Image url="@../images/icon-box-brown.png"/></image>
+                                    </ImageView>
+                                </StackPane>
+                                <VBox spacing="6">
+                                    <Label text="Total Products"
+                                           style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                                    <Label fx:id="totalProductsLabel" text="0"
+                                           style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                              style="-fx-background-color: white; -fx-background-radius: 18;">
+                            <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+                            <HBox spacing="18" alignment="CENTER_LEFT">
+                                <StackPane prefWidth="70" prefHeight="70"
+                                        style="-fx-background-color: #795548; -fx-background-radius: 18;">
+                                    <ImageView fitWidth="38" fitHeight="38" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../images/icon-coffee-white.png"/>
+                                        </image>
+                                    </ImageView>
+                                </StackPane>
+                                <VBox spacing="6">
+                                    <Label text="Available Products"
+                                           style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
+                                    <Label fx:id="availableProductsLabel" text="0"
+                                           style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="28"
                           style="-fx-background-color: white; -fx-background-radius: 18;">
-                        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
-                        <HBox spacing="18" alignment="CENTER_LEFT">
-                            <StackPane prefWidth="70" prefHeight="70"
-                                       style="-fx-background-color: #FFF0DA; -fx-background-radius: 18;">
-                                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true">
-                                    <image><Image url="@../images/icon-box-brown.png"/></image>
-                                </ImageView>
-                            </StackPane>
-                            <VBox spacing="6">
-                                <Label text="Total Products"
-                                       style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
-                                <Label fx:id="totalProductsLabel" text="0"
-                                       style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                            </VBox>
-                        </HBox>
-                    </VBox>
+                        <padding><Insets top="25" right="30" bottom="25" left="30"/></padding>
+                        <ImageView fitWidth="125" fitHeight="125" preserveRatio="true">
+                            <image><Image url="@../images/coffeehub-logo.png"/></image>
+                        </ImageView>
+                        <Region prefWidth="2" maxWidth="2" prefHeight="95"
+                                style="-fx-background-color: #E9DCCF;"/>
+                        <VBox spacing="12">
+                            <Label text="Welcome to CoffeeHub!"
+                                   style="-fx-font-size: 27px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                            <Label text="Explore our coffee selections, place your orders, and enjoy your favorite drinks."
+                                   wrapText="true"
+                                   style="-fx-font-size: 15px; -fx-text-fill: #8B705D;"/>
+                        </VBox>
+                    </HBox>
 
-                    <VBox HBox.hgrow="ALWAYS" spacing="12" alignment="CENTER_LEFT"
+                    <VBox spacing="15"
                           style="-fx-background-color: white; -fx-background-radius: 18;">
-                        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
-                        <HBox spacing="18" alignment="CENTER_LEFT">
-                            <StackPane prefWidth="70" prefHeight="70"
-                                    style="-fx-background-color: #795548; -fx-background-radius: 18;">
-                                <ImageView fitWidth="38" fitHeight="38" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/icon-coffee-white.png"/>
-                                    </image>
-                                </ImageView>
-                            </StackPane>
-                            <VBox spacing="6">
-                                <Label text="Available Products"
-                                       style="-fx-font-size: 16px; -fx-text-fill: #8B705D;"/>
-                                <Label fx:id="availableProductsLabel" text="0"
-                                       style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                            </VBox>
-                        </HBox>
+                        <padding><Insets top="24" right="26" bottom="24" left="26"/></padding>
+                        <Label text="Featured Products"
+                               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                        <Label text="Discover our available coffee selections."
+                               style="-fx-font-size: 14px; -fx-text-fill: #8B705D;"/>
+                        <VBox fx:id="featuredProductsBox" spacing="12"/>
                     </VBox>
-                </HBox>
-
-                <HBox alignment="CENTER_LEFT" spacing="28"
-                      style="-fx-background-color: white; -fx-background-radius: 18;">
-                    <padding><Insets top="25" right="30" bottom="25" left="30"/></padding>
-                    <ImageView fitWidth="125" fitHeight="125" preserveRatio="true">
-                        <image><Image url="@../images/coffeehub-logo.png"/></image>
-                    </ImageView>
-                    <Region prefWidth="2" maxWidth="2" prefHeight="95"
-                            style="-fx-background-color: #E9DCCF;"/>
-                    <VBox spacing="12">
-                        <Label text="Welcome to CoffeeHub!"
-                               style="-fx-font-size: 27px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                        <Label text="Explore our coffee selections, place your orders, and enjoy your favorite drinks."
-                               wrapText="true"
-                               style="-fx-font-size: 15px; -fx-text-fill: #8B705D;"/>
-                    </VBox>
-                </HBox>
-
-                <VBox spacing="15"
-                      style="-fx-background-color: white; -fx-background-radius: 18;">
-                    <padding><Insets top="24" right="26" bottom="24" left="26"/></padding>
-                    <Label text="Featured Products"
-                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-                    <Label text="Discover our available coffee selections."
-                           style="-fx-font-size: 14px; -fx-text-fill: #8B705D;"/>
-                    <VBox fx:id="featuredProductsBox" spacing="12"/>
                 </VBox>
-            </VBox>
+            </ScrollPane>
         </StackPane>
     </center>
 </BorderPane>

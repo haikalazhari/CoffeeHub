@@ -21,10 +21,13 @@ import com.voidsyntax.coffeehub.repository.OrderDAO;
 import com.voidsyntax.coffeehub.repository.ProductDAO;
 import com.voidsyntax.coffeehub.service.CartManager;
 import com.voidsyntax.coffeehub.service.SessionManager;
+import com.voidsyntax.coffeehub.util.AlertUtil;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
 public class CustomerCheckoutController {
@@ -37,6 +40,24 @@ public class CustomerCheckoutController {
 
     @FXML
     private Label totalPriceLabel;
+
+    @FXML
+    private RadioButton tunaiRadio;
+
+    @FXML
+    private RadioButton qrisRadio;
+
+    @FXML
+    private RadioButton bcaRadio;
+
+    @FXML
+    private ToggleGroup paymentToggleGroup;
+
+    @FXML
+    private Label paymentTitleLabel;
+
+    @FXML
+    private Label paymentDetailLabel;
 
     private final OrderDAO orderDAO = new OrderDAO();
     private final ProductDAO productDAO = new ProductDAO();
@@ -60,6 +81,49 @@ public class CustomerCheckoutController {
     @FXML
     private void initialize() {
         tampilkanRingkasanCheckout();
+
+        if (paymentToggleGroup != null) {
+            paymentToggleGroup.selectedToggleProperty().addListener((obs, oldVal, newVal) -> {
+                perbaruiInfoPembayaran();
+            });
+            perbaruiInfoPembayaran();
+        }
+    }
+
+    private void perbaruiInfoPembayaran() {
+        if (paymentTitleLabel == null || paymentDetailLabel == null) {
+            return;
+        }
+
+        if (qrisRadio != null && qrisRadio.isSelected()) {
+            paymentTitleLabel.setText("📱 Pembayaran via QRIS");
+            paymentDetailLabel.setText(
+                    "NMID: ID1020304050607\n"
+                    + "Merchant: CoffeeHub Official\n"
+                    + "Scan QRIS via BCA, Mandiri, GoPay, OVO, Dana, dll."
+            );
+        } else if (bcaRadio != null && bcaRadio.isSelected()) {
+            paymentTitleLabel.setText("💳 Transfer Bank BCA");
+            paymentDetailLabel.setText(
+                    "No. Rekening: 8831 2345 6789\n"
+                    + "Atas Nama: CoffeeHub Indonesia\n"
+                    + "Transfer sesuai total belanja & simpan bukti transfer."
+            );
+        } else {
+            paymentTitleLabel.setText("💵 Pembayaran Tunai");
+            paymentDetailLabel.setText(
+                    "Bayar langsung secara tunai di meja kasir saat mengambil pesanan."
+            );
+        }
+    }
+
+    private PaymentMethod getSelectedPaymentMethod() {
+        if (qrisRadio != null && qrisRadio.isSelected()) {
+            return PaymentMethod.QRIS;
+        } else if (bcaRadio != null && bcaRadio.isSelected()) {
+            return PaymentMethod.TRANSFER_BCA;
+        }
+        return PaymentMethod.TUNAI;
     }
 
     private void tampilkanRingkasanCheckout() {
@@ -210,13 +274,20 @@ public class CustomerCheckoutController {
                         .substring(0, 8)
                         .toUpperCase(Locale.ROOT);
 
+        PaymentMethod paymentMethod = getSelectedPaymentMethod();
+        String paymentDesc = switch (paymentMethod) {
+            case QRIS -> "QRIS (NMID: ID1020304050607 - CoffeeHub Official)";
+            case TRANSFER_BCA -> "Transfer BCA (No. Rek: 8831 2345 6789 a/n CoffeeHub Indonesia)";
+            case TUNAI -> "Tunai (Cash di Kasir)";
+        };
+
         Order order = new Order(
                 0,
                 orderCode,
                 (Pelanggan) user,
                 LocalDateTime.now(),
                 total,
-                PaymentMethod.TUNAI,
+                paymentMethod,
                 PaymentStatus.BELUM_BAYAR,
                 OrderStatus.MENUNGGU
         );
@@ -232,14 +303,27 @@ public class CustomerCheckoutController {
             // Hanya kosongkan keranjang milik pengguna yang checkout.
             CartManager.kosongkanKeranjang(userId);
 
-            tampilkanPesan(
-                    Alert.AlertType.INFORMATION,
+            String instruksiBayar = switch (paymentMethod) {
+                case QRIS -> "Silakan scan QRIS CoffeeHub (NMID: ID1020304050607) sebesar "
+                        + currencyFormat.format(total) + " dan tunjukkan bukti ke kasir.";
+                case TRANSFER_BCA -> "Silakan transfer ke BCA 8831 2345 6789 a/n CoffeeHub Indonesia sebesar "
+                        + currencyFormat.format(total) + " dan tunjukkan bukti ke kasir.";
+                case TUNAI -> "Silakan lakukan pembayaran tunai di kasir saat mengambil pesanan.";
+            };
+
+            AlertUtil.sukses(
+                    checkoutItemsContainer.getScene().getWindow(),
                     "Pesanan Berhasil",
-                    "Pesanan berhasil dibuat."
-                    + "\nKode Pesanan: " + orderCode
-                    + "\nTotal: " + currencyFormat.format(total)
-                    + "\nPembayaran: Tunai"
+                    "Pesanan Berhasil Dibuat!",
+                    "Kode Pesanan: " + orderCode + "\n"
+                    + "Total: " + currencyFormat.format(total) + "\n"
+                    + "Metode: " + paymentDesc + "\n\n"
+                    + instruksiBayar
             );
+
+            if (CustomerController.getInstance() != null) {
+                CustomerController.getInstance().bukaHalamanOrders();
+            }
 
         } else {
             tampilkanPesan(
@@ -256,10 +340,12 @@ public class CustomerCheckoutController {
             String judul,
             String pesan
     ) {
-        Alert alert = new Alert(tipe);
-        alert.setTitle(judul);
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        if (tipe == Alert.AlertType.ERROR) {
+            AlertUtil.error(checkoutItemsContainer.getScene().getWindow(), judul, judul, pesan);
+        } else if (tipe == Alert.AlertType.WARNING) {
+            AlertUtil.peringatan(checkoutItemsContainer.getScene().getWindow(), judul, judul, pesan);
+        } else {
+            AlertUtil.sukses(checkoutItemsContainer.getScene().getWindow(), judul, judul, pesan);
+        }
     }
 }

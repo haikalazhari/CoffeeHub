@@ -44,20 +44,20 @@ Admin dapat mengelola data produk, kategori, stok, dan pesanan. Pelanggan dapat 
 
 ### Admin
 
-- **Dashboard**: Ringkasan data produk, kategori, dan pesanan.
-- **Product Management**: Menambah, melihat, mengubah, dan menghapus produk.
-- **Category Management**: Mengelola kategori produk.
-- **Stock Management**: Memantau dan memperbarui persediaan produk.
-- **Order Management**: Melihat dan mengelola pesanan pelanggan.
-- **Cash Payment Management**: Mencatat dan memperbarui status pembayaran tunai.
+- **Dashboard** — Ringkasan data produk, kategori, dan pesanan.
+- **Product Management** — Menambah, melihat, mengubah, dan menghapus produk.
+- **Category Management** — Mengelola kategori produk.
+- **Stock Management** — Memantau dan memperbarui persediaan produk.
+- **Order Management** — Melihat dan mengelola pesanan pelanggan.
+- **Cash Payment Management** — Mencatat dan memperbarui status pembayaran tunai.
 
 ### Pelanggan
 
-- **Customer Dashboard**: Ringkasan informasi produk.
-- **Product Catalog**: Melihat produk yang tersedia.
-- **Shopping Cart**: Mengelola produk yang akan dipesan.
-- **Cash Checkout**: Membuat pesanan dengan metode pembayaran tunai.
-- **Order History**: Melihat riwayat dan status pesanan.
+- **Customer Dashboard** — Ringkasan informasi produk.
+- **Product Catalog** — Melihat produk yang tersedia.
+- **Shopping Cart** — Mengelola produk yang akan dipesan.
+- **Cash Checkout** — Membuat pesanan dengan metode pembayaran tunai.
+- **Order History** — Melihat riwayat dan status pesanan.
 
 ## Teknologi
 
@@ -161,6 +161,8 @@ db.password=
 ```
 
 Sesuaikan URL, username, dan password jika konfigurasi database berbeda.
+
+> **Catatan keamanan:** `database.properties` berisi konfigurasi lokal dan tidak boleh di-commit ke repository. Pastikan file tersebut tercantum di `.gitignore`. Jangan mengunggah password atau kredensial database ke GitHub.
 
 ## Menjalankan Aplikasi
 

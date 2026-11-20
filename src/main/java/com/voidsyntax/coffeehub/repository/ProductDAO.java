@@ -100,6 +100,37 @@ public class ProductDAO {
         return null;
     }
 
+    // Mengambil produk berdasarkan kategori
+    public List<Product> tampilkanBerdasarkanKategori(int categoryId) {
+        List<Product> daftarProduk = new ArrayList<>();
+
+        String sql = """
+                SELECT p.*, c.name AS category_name,
+                       c.description AS category_description
+                FROM products p
+                LEFT JOIN categories c ON p.category_id = c.id
+                WHERE p.category_id = ?
+                ORDER BY p.id ASC
+                """;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, categoryId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    daftarProduk.add(ambilProductDariResultSet(rs));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Gagal mengambil produk berdasarkan kategori: " + e.getMessage());
+        }
+
+        return daftarProduk;
+    }
+
     // Memperbarui data produk
     public boolean ubah(Product product) {
         String sql = """

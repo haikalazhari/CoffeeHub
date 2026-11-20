@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import com.voidsyntax.coffeehub.model.Product;
 import com.voidsyntax.coffeehub.repository.ProductDAO;
+import com.voidsyntax.coffeehub.util.AlertUtil;
+import com.voidsyntax.coffeehub.util.ToastUtil;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -92,6 +94,46 @@ public class StockController {
             return new SimpleStringProperty(kategori);
         });
 
+        categoryColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    Label badge = new Label();
+                    if ("Coffee".equalsIgnoreCase(item)) {
+                        badge.setText("☕ " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #FAF4ED; -fx-text-fill: #56301F; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #E8D8C8; -fx-border-radius: 8;"
+                        );
+                    } else if ("Non-Coffee".equalsIgnoreCase(item)) {
+                        badge.setText("🍵 " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #ECFDF5; -fx-text-fill: #047857; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #A7F3D0; -fx-border-radius: 8;"
+                        );
+                    } else if (item.contains("Pastry") || item.contains("Bakery")) {
+                        badge.setText("🥐 " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #FFF7ED; -fx-text-fill: #C2410C; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #FED7AA; -fx-border-radius: 8;"
+                        );
+                    } else {
+                        badge.setText(item);
+                        badge.setStyle(
+                                "-fx-background-color: #F5EBE1; -fx-text-fill: #70452F; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8;"
+                        );
+                    }
+                    setGraphic(badge);
+                    setText(null);
+                }
+            }
+        });
+
         stockColumn.setCellValueFactory(data ->
                 new SimpleIntegerProperty(
                         data.getValue().getStok()
@@ -113,6 +155,58 @@ public class StockController {
 
             return new SimpleStringProperty(status);
         });
+
+        statusColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    Label badge = new Label();
+                    if ("In Stock".equals(item)) {
+                        badge.setText("✓ In Stock");
+                        badge.setStyle(
+                                "-fx-background-color: #ECFDF5;" +
+                                "-fx-text-fill: #047857;" +
+                                "-fx-border-color: #A7F3D0;" +
+                                "-fx-border-radius: 12;" +
+                                "-fx-background-radius: 12;" +
+                                "-fx-padding: 3 10;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 11px;"
+                        );
+                    } else if ("Low Stock".equals(item)) {
+                        badge.setText("⚠️ Low Stock");
+                        badge.setStyle(
+                                "-fx-background-color: #FEFCE8;" +
+                                "-fx-text-fill: #A16207;" +
+                                "-fx-border-color: #FEF08A;" +
+                                "-fx-border-radius: 12;" +
+                                "-fx-background-radius: 12;" +
+                                "-fx-padding: 3 10;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 11px;"
+                        );
+                    } else {
+                        badge.setText("✕ Out of Stock");
+                        badge.setStyle(
+                                "-fx-background-color: #FEF2F2;" +
+                                "-fx-text-fill: #B91C1C;" +
+                                "-fx-border-color: #FECACA;" +
+                                "-fx-border-radius: 12;" +
+                                "-fx-background-radius: 12;" +
+                                "-fx-padding: 3 10;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 11px;"
+                        );
+                    }
+                    setGraphic(badge);
+                    setText(null);
+                }
+            }
+        });
     }
 
     // Membuat tombol Update Stock
@@ -125,9 +219,13 @@ public class StockController {
 
             {
                 updateButton.setStyle(
-                        "-fx-background-color: #8B6048;" +
+                        "-fx-background-color: #70452F;" +
                         "-fx-text-fill: white;" +
-                        "-fx-background-radius: 5;"
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-padding: 5 14;" +
+                        "-fx-cursor: hand;"
                 );
 
                 updateButton.setOnAction(event -> {
@@ -192,121 +290,42 @@ public class StockController {
 
     // Memperbarui stok produk
     private void handleUpdateStock(Product product) {
-
-        Dialog<Integer> dialog = new Dialog<>();
-
-        dialog.setTitle("Update Stock");
-        dialog.setHeaderText(
-                "Update stock for " + product.getNama()
+        Integer stokBaru = AlertUtil.inputStok(
+                stockTable.getScene().getWindow(),
+                product.getNama(),
+                product.getStok()
         );
 
-        ButtonType saveButton = new ButtonType(
-                "Save",
-                ButtonBar.ButtonData.OK_DONE
-        );
+        if (stokBaru == null || stokBaru == product.getStok()) {
+            return;
+        }
 
-        dialog.getDialogPane().getButtonTypes().addAll(
-                saveButton,
-                ButtonType.CANCEL
-        );
+        product.setStok(stokBaru);
+        boolean berhasil = productDAO.ubah(product);
 
-        TextField stockField = new TextField(
-                String.valueOf(product.getStok())
-        );
-
-        stockField.setPromptText("Enter new stock");
-
-        HBox content = new HBox(10);
-        content.getChildren().addAll(
-                new Label("New Stock:"),
-                stockField
-        );
-
-        dialog.getDialogPane().setContent(content);
-
-        Button save = (Button) dialog.getDialogPane()
-                .lookupButton(saveButton);
-
-        save.addEventFilter(
-                javafx.event.ActionEvent.ACTION,
-                event -> {
-
-                    try {
-                        int stok = Integer.parseInt(
-                                stockField.getText().trim()
-                        );
-
-                        if (stok < 0) {
-                            event.consume();
-                            tampilkanPeringatan(
-                                    "Stok tidak boleh negatif."
-                            );
-                        }
-
-                    } catch (NumberFormatException e) {
-                        event.consume();
-                        tampilkanPeringatan(
-                                "Stok harus berupa bilangan bulat."
-                        );
-                    }
-                }
-        );
-
-        dialog.setResultConverter(button -> {
-
-            if (button == saveButton) {
-                return Integer.parseInt(
-                        stockField.getText().trim()
-                );
-            }
-
-            return null;
-        });
-
-        Optional<Integer> result = dialog.showAndWait();
-
-        result.ifPresent(stokBaru -> {
-
-            product.setStok(stokBaru);
-
-            boolean berhasil = productDAO.ubah(product);
-
-            if (berhasil) {
-                tampilkanInformasi(
-                        "Stok produk berhasil diperbarui."
-                );
-
-                muatDataStok();
-
-            } else {
-                tampilkanError(
-                        "Gagal memperbarui stok produk."
-                );
-            }
-        });
+        if (berhasil) {
+            ToastUtil.showSuccess(
+                    stockTable,
+                    "Stok untuk " + product.getNama() + " berhasil diubah menjadi " + stokBaru + "!"
+            );
+            muatDataStok();
+        } else {
+            ToastUtil.showWarning(
+                    stockTable,
+                    "Gagal memperbarui stok produk."
+            );
+        }
     }
 
     private void tampilkanPeringatan(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Stock Validation");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showWarning(stockTable, pesan);
     }
 
     private void tampilkanInformasi(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("CoffeeHub");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showInfo(stockTable, pesan);
     }
 
     private void tampilkanError(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("CoffeeHub");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showWarning(stockTable, pesan);
     }
 }

@@ -2,42 +2,47 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/27"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.voidsyntax.coffeehub.controller.CustomerOrdersController"
-      spacing="20"
-      style="-fx-background-color: #F7F1E8;">
+<ScrollPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.CustomerOrdersController"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
+            style="-fx-background: #F7F1E8; -fx-background-color: #F7F1E8; -fx-border-color: transparent; -fx-padding: 0;">
 
-    <padding>
-        <Insets top="30" right="35" bottom="30" left="35"/>
-    </padding>
+    <VBox spacing="20" style="-fx-background-color: #F7F1E8;">
+        <padding>
+            <Insets top="30" right="35" bottom="30" left="35"/>
+        </padding>
 
-    <VBox spacing="5">
-        <Label text="My Orders"
-               style="-fx-font-size: 28px;
-                      -fx-font-weight: bold;
-                      -fx-text-fill: #493629;"/>
+        <VBox spacing="5">
+            <Label text="My Orders"
+                   style="-fx-font-size: 28px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #493629;"/>
 
-        <Label text="Track and review your order history."
-               style="-fx-font-size: 14px;
-                      -fx-text-fill: #8B7562;"/>
+            <Label text="Track and review your order history."
+                   style="-fx-font-size: 14px;
+                          -fx-text-fill: #8B7562;"/>
+        </VBox>
+
+        <VBox spacing="15"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 12;
+                     -fx-padding: 25;">
+
+            <Label text="Order History"
+                   style="-fx-font-size: 20px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #493629;"/>
+
+            <VBox fx:id="ordersContainer"
+                  spacing="15"/>
+
+        </VBox>
+
     </VBox>
-
-    <VBox spacing="15"
-          style="-fx-background-color: white;
-                 -fx-background-radius: 12;
-                 -fx-padding: 25;">
-
-        <Label text="Order History"
-               style="-fx-font-size: 20px;
-                      -fx-font-weight: bold;
-                      -fx-text-fill: #493629;"/>
-
-        <VBox fx:id="ordersContainer"
-              spacing="15"/>
-
-    </VBox>
-
-</VBox>
+</ScrollPane>

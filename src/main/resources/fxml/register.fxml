@@ -26,17 +26,17 @@
 
     <VBox spacing="6" maxWidth="370" style="-fx-background-color: white; -fx-background-radius: 15;">
         <padding><Insets top="18" right="24" bottom="18" left="24"/></padding>
-        <Label text="Full Name" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Full Name *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <TextField fx:id="namaField" promptText="Enter your full name" prefHeight="37"/>
-        <Label text="Email" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Email *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <TextField fx:id="emailField" promptText="Enter your email" prefHeight="37"/>
-        <Label text="Phone Number" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Phone Number *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <TextField fx:id="noTeleponField" promptText="Enter your phone number" prefHeight="37"/>
-        <Label text="Address" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Address *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <TextField fx:id="alamatField" promptText="Enter your address" prefHeight="37"/>
-        <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Password *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <PasswordField fx:id="passwordField" promptText="Minimum 8 characters" prefHeight="37"/>
-        <Label text="Confirm Password" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+        <Label text="Confirm Password *" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <PasswordField fx:id="confirmPasswordField" promptText="Re-enter your password" prefHeight="37"/>
         <Button text="Create Account" onAction="#handleRegister" maxWidth="Infinity" prefHeight="43"
                 style="-fx-background-color: #70452F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 9; -fx-cursor: hand;"/>

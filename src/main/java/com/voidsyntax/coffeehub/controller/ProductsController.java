@@ -7,6 +7,8 @@ import java.util.Locale;
 
 import com.voidsyntax.coffeehub.model.Product;
 import com.voidsyntax.coffeehub.repository.ProductDAO;
+import com.voidsyntax.coffeehub.util.AlertUtil;
+import com.voidsyntax.coffeehub.util.ToastUtil;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -86,6 +89,46 @@ public class ProductsController {
             return new SimpleStringProperty(namaKategori);
         });
 
+        categoryColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    Label badge = new Label();
+                    if ("Coffee".equalsIgnoreCase(item)) {
+                        badge.setText("☕ " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #FAF4ED; -fx-text-fill: #56301F; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #E8D8C8; -fx-border-radius: 8;"
+                        );
+                    } else if ("Non-Coffee".equalsIgnoreCase(item)) {
+                        badge.setText("🍵 " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #ECFDF5; -fx-text-fill: #047857; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #A7F3D0; -fx-border-radius: 8;"
+                        );
+                    } else if (item.contains("Pastry") || item.contains("Bakery")) {
+                        badge.setText("🥐 " + item);
+                        badge.setStyle(
+                                "-fx-background-color: #FFF7ED; -fx-text-fill: #C2410C; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8; -fx-border-color: #FED7AA; -fx-border-radius: 8;"
+                        );
+                    } else {
+                        badge.setText(item);
+                        badge.setStyle(
+                                "-fx-background-color: #F5EBE1; -fx-text-fill: #70452F; -fx-font-weight: bold; " +
+                                "-fx-font-size: 11px; -fx-padding: 3 9; -fx-background-radius: 8;"
+                        );
+                    }
+                    setGraphic(badge);
+                    setText(null);
+                }
+            }
+        });
+
         priceColumn.setCellValueFactory(data -> {
             NumberFormat format =
                     NumberFormat.getCurrencyInstance(
@@ -112,66 +155,125 @@ public class ProductsController {
                                 : "Unavailable"
                 )
         );
+
+        availabilityColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    Label badge = new Label(item.equals("Available") ? "✓ Available" : "✕ Unavailable");
+                    if (item.equals("Available")) {
+                        badge.setStyle(
+                                "-fx-background-color: #ECFDF5;" +
+                                "-fx-text-fill: #047857;" +
+                                "-fx-border-color: #A7F3D0;" +
+                                "-fx-border-radius: 12;" +
+                                "-fx-background-radius: 12;" +
+                                "-fx-padding: 3 10;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 11px;"
+                        );
+                    } else {
+                        badge.setStyle(
+                                "-fx-background-color: #FEF2F2;" +
+                                "-fx-text-fill: #B91C1C;" +
+                                "-fx-border-color: #FECACA;" +
+                                "-fx-border-radius: 12;" +
+                                "-fx-background-radius: 12;" +
+                                "-fx-padding: 3 10;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 11px;"
+                        );
+                    }
+                    setGraphic(badge);
+                    setText(null);
+                }
+            }
+        });
+
+        priceColumn.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                    setStyle("-fx-font-weight: bold; -fx-text-fill: #70452F;");
+                }
+            }
+        });
     }
 
-
-        private void aturTombolEdit() {
+    private void aturTombolEdit() {
 
         actionColumn.setCellFactory(column -> new TableCell<>() {
 
-                private final Button editButton = new Button("Edit");
-                private final Button deleteButton = new Button("Delete");
+            private final Button editButton = new Button("Edit");
+            private final Button deleteButton = new Button("Delete");
 
-                {
+            {
                 editButton.setStyle(
-                        "-fx-background-color: #8B6048;" +
+                        "-fx-background-color: #70452F;" +
                         "-fx-text-fill: white;" +
-                        "-fx-background-radius: 5;"
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-padding: 5 12;" +
+                        "-fx-cursor: hand;"
                 );
 
                 deleteButton.setStyle(
-                        "-fx-background-color: #A65345;" +
+                        "-fx-background-color: #A64B3B;" +
                         "-fx-text-fill: white;" +
-                        "-fx-background-radius: 5;"
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-padding: 5 12;" +
+                        "-fx-cursor: hand;"
                 );
 
                 editButton.setOnAction(event -> {
-                        Product product = getTableView()
-                                .getItems()
-                                .get(getIndex());
+                    Product product = getTableView()
+                            .getItems()
+                            .get(getIndex());
 
-                        bukaFormEdit(product);
+                    bukaFormEdit(product);
                 });
 
                 deleteButton.setOnAction(event -> {
-                        Product product = getTableView()
-                                .getItems()
-                                .get(getIndex());
+                    Product product = getTableView()
+                            .getItems()
+                            .get(getIndex());
 
-                        handleDeleteProduct(product);
+                    handleDeleteProduct(product);
                 });
-                }
+            }
 
-                @Override
-                protected void updateItem(Void item, boolean empty) {
+            @Override
+            protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty) {
-                        setGraphic(null);
+                    setGraphic(null);
                 } else {
-                        javafx.scene.layout.HBox buttons =
-                                new javafx.scene.layout.HBox(5);
+                    javafx.scene.layout.HBox buttons =
+                            new javafx.scene.layout.HBox(8);
+                    buttons.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 
-                        buttons.getChildren().addAll(
-                                editButton,
-                                deleteButton
-                        );
+                    buttons.getChildren().addAll(
+                            editButton,
+                            deleteButton
+                    );
 
-                        setGraphic(buttons);
+                    setGraphic(buttons);
                 }
-                }
+            }
         });
-        }
+    }
 
     private void muatDataProduk() {
 
@@ -234,45 +336,30 @@ public class ProductsController {
         }
     }
 
-        private void handleDeleteProduct(Product product) {
+    private void handleDeleteProduct(Product product) {
 
-        Alert confirmation = new Alert(
-                Alert.AlertType.CONFIRMATION
+        boolean setuju = AlertUtil.konfirmasi(
+                productTable.getScene().getWindow(),
+                "Hapus Produk",
+                "Hapus " + product.getNama() + "?",
+                "Apakah Anda yakin ingin menghapus produk ini?",
+                "Hapus",
+                "Batal"
         );
 
-        confirmation.setTitle("Delete Product");
-        confirmation.setHeaderText("Delete " + product.getNama() + "?");
-        confirmation.setContentText(
-                "Are you sure you want to delete this product?"
-        );
+        if (setuju) {
+            boolean berhasil = productDAO.hapus(product.getId());
 
-        java.util.Optional<javafx.scene.control.ButtonType> result =
-                confirmation.showAndWait();
-
-        if (result.isPresent()
-                && result.get() == javafx.scene.control.ButtonType.OK) {
-
-                boolean berhasil = productDAO.hapus(product.getId());
-
-                if (berhasil) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("CoffeeHub");
-                alert.setHeaderText(null);
-                alert.setContentText("Produk berhasil dihapus.");
-                alert.showAndWait();
-
+            if (berhasil) {
+                ToastUtil.showSuccess(productTable, "Produk " + product.getNama() + " berhasil dihapus!");
                 muatDataProduk();
-
-                } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("CoffeeHub");
-                alert.setHeaderText(null);
-                alert.setContentText(
-                        "Gagal menghapus produk. Produk mungkin masih digunakan dalam pesanan."
+            } else {
+                ToastUtil.showWarning(
+                        productTable,
+                        "Gagal menghapus produk. Produk mungkin masih tercatat dalam pesanan."
                 );
-                alert.showAndWait();
-                }
+            }
         }
-        }
+    }
 
 }

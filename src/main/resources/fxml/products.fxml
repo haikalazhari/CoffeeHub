@@ -7,7 +7,8 @@
 <BorderPane xmlns="http://javafx.com/javafx/27"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.voidsyntax.coffeehub.controller.ProductsController"
-            style="-fx-background-color: #F5EFE6;">
+            stylesheets="@../css/style.css"
+            style="-fx-background-color: #F7F1E8;">
 
     <top>
         <VBox spacing="8" BorderPane.alignment="CENTER_LEFT">
@@ -16,10 +17,10 @@
             </padding>
 
             <Label text="Products"
-                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
 
             <Label text="Manage your coffee shop products"
-                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+                   style="-fx-font-size: 14px; -fx-text-fill: #8B7562;"/>
         </VBox>
     </top>
 
@@ -31,29 +32,28 @@
 
             <HBox alignment="CENTER_LEFT">
                 <Label text="Product List"
-                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
 
                 <Region HBox.hgrow="ALWAYS"/>
 
                 <Button text="+ Add Product"
                         onAction="#handleAddProduct"
-                        style="-fx-background-color: #8B6048; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 7; -fx-padding: 10 18;"/>
+                        style="-fx-background-color: #70452F; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8; -fx-padding: 9 18; -fx-cursor: hand;"/>
             </HBox>
 
             <TableView fx:id="productTable"
-                       VBox.vgrow="ALWAYS"
-                       style="-fx-background-radius: 8;">
-
+                       VBox.vgrow="ALWAYS">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
                 <columns>
-                    <TableColumn fx:id="idColumn" text="ID" prefWidth="45"/>
-                    <TableColumn fx:id="nameColumn" text="Product Name" prefWidth="150"/>
-                    <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
-                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="110"/>
-                    <TableColumn fx:id="stockColumn" text="Stock" prefWidth="70"/>
-                    <TableColumn fx:id="availabilityColumn" text="Availability" prefWidth="100"/>
-                    <TableColumn fx:id="actionColumn"
-                        text="Action"
-                        prefWidth="100"/>
+                    <TableColumn fx:id="idColumn" text="ID" minWidth="45" maxWidth="60"/>
+                    <TableColumn fx:id="nameColumn" text="Product Name" minWidth="160"/>
+                    <TableColumn fx:id="categoryColumn" text="Category" minWidth="130"/>
+                    <TableColumn fx:id="priceColumn" text="Price" minWidth="110"/>
+                    <TableColumn fx:id="stockColumn" text="Stock" minWidth="75" maxWidth="90"/>
+                    <TableColumn fx:id="availabilityColumn" text="Availability" minWidth="120"/>
+                    <TableColumn fx:id="actionColumn" text="Action" minWidth="140" maxWidth="160"/>
                 </columns>
             </TableView>
         </VBox>

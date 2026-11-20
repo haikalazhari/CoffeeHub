@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.voidsyntax.coffeehub.config.DatabaseConnection;
 import com.voidsyntax.coffeehub.enums.OrderStatus;
@@ -21,9 +23,13 @@ import com.voidsyntax.coffeehub.model.User;
 
 public class OrderDAO {
 
+    // Cache catatan pesanan dalam memori agar tidak perlu mengubah struktur tabel database
+    private static final Map<String, String> cacheOrderNotes = new ConcurrentHashMap<>();
+
     // Menambahkan pesanan beserta detail produknya
 
     public boolean tambah(Order order) {
+        // Query SQL asli yang 100% sesuai dengan skema database asli coffeehub
         String sqlOrder = """
                 INSERT INTO orders
                 (order_code, user_id, order_date, total_amount,
@@ -67,11 +73,17 @@ public class OrderDAO {
                 stmt.setInt(2, order.getPelanggan().getId());
                 stmt.setTimestamp(3, Timestamp.valueOf(order.getOrderDate()));
                 stmt.setBigDecimal(4, order.getTotalAmount());
-                stmt.setString(5, order.getPaymentMethod().name());
+                // Tetap kompatibel dengan skema enum database asli ('TUNAI')
+                stmt.setString(5, "TUNAI");
                 stmt.setString(6, order.getPaymentStatus().name());
                 stmt.setString(7, order.getOrderStatus().name());
 
                 stmt.executeUpdate();
+
+                // Simpan catatan ke cache lokal jika ada
+                if (order.getNotes() != null && !order.getNotes().isBlank()) {
+                    cacheOrderNotes.put(order.getOrderCode(), order.getNotes());
+                }
 
                 try (ResultSet keys = stmt.getGeneratedKeys()) {
                     if (!keys.next()) {
@@ -224,6 +236,52 @@ public class OrderDAO {
         }
 
         return daftarOrder;
+    }
+
+    // Mengambil detail item untuk suatu pesanan
+    public List<OrderDetail> ambilDetailPesanan(int orderId) {
+        List<OrderDetail> details = new ArrayList<>();
+        String sql = """
+                SELECT od.id, od.product_id, od.quantity,
+                    od.unit_price, od.subtotal, p.name
+                FROM order_details od
+                JOIN products p ON od.product_id = p.id
+                WHERE od.order_id = ?
+                """;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, orderId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product(
+                            rs.getInt("product_id"),
+                            rs.getString("name"),
+                            null,
+                            rs.getBigDecimal("unit_price"),
+                            0,
+                            null,
+                            true,
+                            null
+                    );
+
+                    OrderDetail detail = new OrderDetail(
+                            rs.getInt("id"),
+                            product,
+                            rs.getInt("quantity"),
+                            rs.getBigDecimal("unit_price")
+                    );
+
+                    details.add(detail);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Gagal mengambil detail pesanan: " + e.getMessage());
+        }
+
+        return details;
     }
 
     private void muatDetailPesanan(Connection conn, Order order)
@@ -490,15 +548,36 @@ public class OrderDAO {
                 null
         );
 
-        return new Order(
+        PaymentMethod method = PaymentMethod.TUNAI;
+        try {
+            String dbMethod = rs.getString("payment_method");
+            if (dbMethod != null) {
+                method = PaymentMethod.valueOf(dbMethod);
+            }
+        } catch (Exception ignored) {
+        }
+
+        Order order = new Order(
                 rs.getInt("id"),
                 rs.getString("order_code"),
                 pelanggan,
                 rs.getTimestamp("order_date").toLocalDateTime(),
                 rs.getBigDecimal("total_amount"),
-                PaymentMethod.valueOf(rs.getString("payment_method")),
+                method,
                 PaymentStatus.valueOf(rs.getString("payment_status")),
                 OrderStatus.valueOf(rs.getString("order_status"))
         );
+
+        String note = cacheOrderNotes.get(order.getOrderCode());
+        if (note != null) {
+            order.setNotes(note);
+        } else {
+            try {
+                order.setNotes(rs.getString("notes"));
+            } catch (SQLException ignored) {
+            }
+        }
+
+        return order;
     }
 }

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/27"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.voidsyntax.coffeehub.controller.ProfileController"
+            fitToWidth="true"
+            style="-fx-background-color: transparent; -fx-background: #F7F1E8;">
+
+    <content>
+        <VBox fx:id="profileContainer" spacing="22" style="-fx-background-color: #F7F1E8;">
+            <padding>
+                <Insets top="30" right="36" bottom="36" left="36"/>
+            </padding>
+
+            <!-- Header Title -->
+            <VBox spacing="4">
+                <Label text="Profil Akun"
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                <Label text="Kelola informasi akun Anda dan perbarui password dengan mudah dan aman."
+                       style="-fx-font-size: 14px; -fx-text-fill: #8B7562;"/>
+            </VBox>
+
+            <!-- Main Card Container -->
+            <VBox spacing="24"
+                  style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 30; -fx-border-color: #E8D8C8; -fx-border-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(73, 54, 41, 0.05), 10, 0, 0, 4);">
+
+                <!-- User Profile Header Banner (Avatar & Info) -->
+                <HBox alignment="CENTER_LEFT" spacing="20"
+                      style="-fx-background-color: linear-gradient(to right, #FAF4ED, #FFF9F3); -fx-background-radius: 12; -fx-padding: 20; -fx-border-color: #EFE3D5; -fx-border-radius: 12;">
+
+                    <!-- Avatar Circle with initial -->
+                    <StackPane fx:id="avatarCircle" prefWidth="70" prefHeight="70" minWidth="70" minHeight="70" maxWidth="70" maxHeight="70"
+                               style="-fx-background-color: linear-gradient(to bottom, #70452F, #56301F); -fx-background-radius: 35; -fx-border-color: #C58B55; -fx-border-radius: 35; -fx-border-width: 2.5;">
+                        <Label fx:id="avatarInitialLabel" text="U"
+                               style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #FFF8ED;"/>
+                    </StackPane>
+
+                    <VBox spacing="6">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label fx:id="displayNameLabel" text="Nama Pengguna"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                            <Label fx:id="roleBadge" text="PELANGGAN"
+                                   style="-fx-background-color: #EFE2D3; -fx-text-fill: #56301F; -fx-font-weight: bold; -fx-font-size: 11px; -fx-padding: 4 10 4 10; -fx-background-radius: 12; -fx-border-color: #D8C2AD; -fx-border-radius: 12;"/>
+                        </HBox>
+                        <Label fx:id="displayEmailLabel" text="email@domain.com"
+                               style="-fx-font-size: 13px; -fx-text-fill: #8B7562;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Section 1: Informasi Profil -->
+                <VBox spacing="14">
+                    <Label text="Informasi Pribadi"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+
+                    <VBox spacing="6">
+                        <Label text="Nama Lengkap *" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                        <TextField fx:id="nameField" promptText="Masukkan nama lengkap Anda"
+                                   prefHeight="42"
+                                   style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px; -fx-text-fill: #493629;"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Alamat Email *" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                        <TextField fx:id="emailField" promptText="Masukkan alamat email"
+                                   prefHeight="42"
+                                   style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px; -fx-text-fill: #493629;"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="No. Telepon yang Terdaftar *" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                        <TextField fx:id="phoneField" promptText="Masukkan nomor telepon terdaftar (cth: 081234567890)"
+                                   prefHeight="42"
+                                   style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px; -fx-text-fill: #493629;"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Divider -->
+                <Region prefHeight="1" style="-fx-background-color: #F0E6DC;"/>
+
+                <!-- Section 2: Keamanan / Ubah Password -->
+                <VBox spacing="14">
+                    <VBox spacing="3">
+                        <Label text="Keamanan Akun (Ganti Password)"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+                        <Label text="Kosongkan bagian ini jika Anda tidak berniat mengganti password."
+                               style="-fx-font-size: 12px; -fx-text-fill: #9C8573;"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Password Saat Ini" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                        <PasswordField fx:id="oldPasswordField" promptText="Masukkan password saat ini untuk verifikasi"
+                                       prefHeight="42"
+                                       style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px;"/>
+                    </VBox>
+
+                    <HBox spacing="16">
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Password Baru" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                            <PasswordField fx:id="newPasswordField" promptText="Minimal 8 karakter"
+                                           prefHeight="42"
+                                           style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px;"/>
+                        </VBox>
+
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Konfirmasi Password Baru" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #493629;"/>
+                            <PasswordField fx:id="confirmPasswordField" promptText="Ulangi password baru"
+                                           prefHeight="42"
+                                           style="-fx-background-color: #FAF6F0; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 14; -fx-font-size: 14px;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Tombol Aksi -->
+                <HBox spacing="14" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+                    <Button text="Batal / Reset" onAction="#handleReset"
+                            prefHeight="44"
+                            style="-fx-background-color: white; -fx-text-fill: #6D5A4D; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8; -fx-border-color: #D8C7B8; -fx-border-radius: 8; -fx-padding: 0 24; -fx-cursor: hand;"/>
+
+                    <Button fx:id="saveButton" text="Simpan Perubahan" onAction="#handleSaveProfile"
+                            prefHeight="44"
+                            style="-fx-background-color: #70452F; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 8; -fx-padding: 0 28; -fx-cursor: hand;"/>
+                </HBox>
+
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

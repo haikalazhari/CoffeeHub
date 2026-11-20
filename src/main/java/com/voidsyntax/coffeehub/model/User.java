@@ -9,6 +9,7 @@ public abstract class User implements Identifiable {
     private String email;
     private String password;
     private Role role;
+    private String noTelepon;
 
     public User(int id, String nama, String email, String password, Role role) {
         this.id = id;
@@ -53,6 +54,14 @@ public abstract class User implements Identifiable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getNoTelepon() {
+        return noTelepon;
+    }
+
+    public void setNoTelepon(String noTelepon) {
+        this.noTelepon = noTelepon;
     }
 
     public void tampilkanInfo() {

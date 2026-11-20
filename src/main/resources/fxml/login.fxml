@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 
 <VBox xmlns="http://javafx.com/javafx/27" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.voidsyntax.coffeehub.controller.LoginController"
@@ -31,9 +32,21 @@
         <Label text="Email" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
         <TextField fx:id="emailField" promptText="Enter your email" prefHeight="43"
                    style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC;"/>
-        <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
-        <PasswordField fx:id="passwordField" promptText="Enter your password" prefHeight="43"
-                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC;"/>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #56301F;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Forgot Password?" onAction="#handleForgotPassword"
+                    style="-fx-background-color: transparent; -fx-text-fill: #8A5A3D; -fx-font-size: 12px; -fx-cursor: hand; -fx-padding: 0;"/>
+        </HBox>
+        <StackPane alignment="CENTER_RIGHT">
+            <PasswordField fx:id="passwordField" promptText="Enter your password" prefHeight="43"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC; -fx-padding: 0 42 0 12;"/>
+            <TextField fx:id="passwordTextField" promptText="Enter your password" prefHeight="43" visible="false" managed="false"
+                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E2D3C5; -fx-background-color: #FFFEFC; -fx-padding: 0 42 0 12;"/>
+            <Button fx:id="togglePasswordButton" text="👁" onAction="#handleTogglePassword"
+                    style="-fx-background-color: transparent; -fx-cursor: hand; -fx-font-size: 15px; -fx-text-fill: #8B7562; -fx-padding: 0 12 0 0;"/>
+        </StackPane>
+        <Region prefHeight="4"/>
         <Button text="Sign In" onAction="#handleLogin" maxWidth="Infinity" prefHeight="46"
                 style="-fx-background-color: #70452F; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 9; -fx-cursor: hand;"/>
         <Label fx:id="messageLabel" text="" wrapText="true" style="-fx-text-fill: #B33A3A;"/>

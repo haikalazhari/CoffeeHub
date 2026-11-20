@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import com.voidsyntax.coffeehub.model.Category;
 import com.voidsyntax.coffeehub.repository.CategoryDAO;
+import com.voidsyntax.coffeehub.util.AlertUtil;
+import com.voidsyntax.coffeehub.util.ToastUtil;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -84,15 +86,23 @@ public class CategoriesController {
 
             {
                 editButton.setStyle(
-                        "-fx-background-color: #8B6048;" +
+                        "-fx-background-color: #70452F;" +
                         "-fx-text-fill: white;" +
-                        "-fx-background-radius: 5;"
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-padding: 5 12;" +
+                        "-fx-cursor: hand;"
                 );
 
                 deleteButton.setStyle(
-                        "-fx-background-color: #A65345;" +
+                        "-fx-background-color: #A64B3B;" +
                         "-fx-text-fill: white;" +
-                        "-fx-background-radius: 5;"
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 12px;" +
+                        "-fx-background-radius: 6;" +
+                        "-fx-padding: 5 12;" +
+                        "-fx-cursor: hand;"
                 );
 
                 editButton.setOnAction(event -> {
@@ -120,7 +130,8 @@ public class CategoriesController {
                     setGraphic(null);
                 } else {
                     javafx.scene.layout.HBox buttons =
-                            new javafx.scene.layout.HBox(5);
+                            new javafx.scene.layout.HBox(8);
+                    buttons.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 
                     buttons.getChildren().addAll(
                             editButton,
@@ -274,58 +285,38 @@ public class CategoriesController {
     // Menghapus kategori
     private void handleDeleteCategory(Category category) {
 
-        Alert confirmation = new Alert(
-                Alert.AlertType.CONFIRMATION
+        boolean setuju = AlertUtil.konfirmasi(
+                categoryTable.getScene().getWindow(),
+                "Hapus Kategori",
+                "Hapus Kategori " + category.getNama() + "?",
+                "Apakah Anda yakin ingin menghapus kategori ini?",
+                "Hapus",
+                "Batal"
         );
 
-        confirmation.setTitle("Delete Category");
-        confirmation.setHeaderText(
-                "Delete " + category.getNama() + "?"
-        );
-
-        confirmation.setContentText(
-                "Are you sure you want to delete this category?"
-        );
-
-        Optional<ButtonType> result = confirmation.showAndWait();
-
-        if (result.isPresent()
-                && result.get() == ButtonType.OK) {
-
+        if (setuju) {
             boolean berhasil = categoryDAO.hapus(
                     category.getId()
             );
 
             if (berhasil) {
-                tampilkanInformasi("Kategori berhasil dihapus.");
+                ToastUtil.showSuccess(categoryTable, "Kategori " + category.getNama() + " berhasil dihapus!");
                 muatDataKategori();
             } else {
-                tampilkanError("Gagal menghapus kategori.");
+                ToastUtil.showWarning(categoryTable, "Gagal menghapus kategori.");
             }
         }
     }
 
     private void tampilkanPeringatan(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Category Validation");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showWarning(categoryTable, pesan);
     }
 
     private void tampilkanInformasi(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("CoffeeHub");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showSuccess(categoryTable, pesan);
     }
 
     private void tampilkanError(String pesan) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("CoffeeHub");
-        alert.setHeaderText(null);
-        alert.setContentText(pesan);
-        alert.showAndWait();
+        ToastUtil.showWarning(categoryTable, pesan);
     }
 }

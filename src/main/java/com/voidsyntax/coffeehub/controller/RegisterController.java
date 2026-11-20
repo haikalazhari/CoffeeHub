@@ -43,9 +43,33 @@ public class RegisterController {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        if (nama.isEmpty() || email.isEmpty()
-                || password.isEmpty() || confirmPassword.isEmpty()) {
-            tampilkanPesan("Field wajib harus diisi.", false);
+        if (nama.isEmpty()) {
+            tampilkanPesan("Nama lengkap wajib diisi.", false);
+            return;
+        }
+
+        if (email.isEmpty()) {
+            tampilkanPesan("Email wajib diisi.", false);
+            return;
+        }
+
+        if (noTelepon.isEmpty()) {
+            tampilkanPesan("Nomor telepon wajib diisi.", false);
+            return;
+        }
+
+        if (alamat.isEmpty()) {
+            tampilkanPesan("Alamat wajib diisi.", false);
+            return;
+        }
+
+        if (password.isEmpty()) {
+            tampilkanPesan("Password wajib diisi.", false);
+            return;
+        }
+
+        if (confirmPassword.isEmpty()) {
+            tampilkanPesan("Konfirmasi password wajib diisi.", false);
             return;
         }
 

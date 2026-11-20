@@ -7,7 +7,8 @@
 <BorderPane xmlns="http://javafx.com/javafx/27"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.voidsyntax.coffeehub.controller.OrdersController"
-            style="-fx-background-color: #F5EFE6;">
+            stylesheets="@../css/style.css"
+            style="-fx-background-color: #F7F1E8;">
 
     <top>
         <VBox spacing="8">
@@ -16,10 +17,10 @@
             </padding>
 
             <Label text="Order Management"
-                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
 
             <Label text="Manage customer orders and cash payments"
-                   style="-fx-font-size: 14px; -fx-text-fill: #9A7865;"/>
+                   style="-fx-font-size: 14px; -fx-text-fill: #8B7562;"/>
         </VBox>
     </top>
 
@@ -37,23 +38,23 @@
                 </columnConstraints>
 
                 <VBox spacing="8"
-                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E8D8C8; -fx-border-radius: 12;"
                       GridPane.columnIndex="0">
 
                     <Label text="Total Orders"
-                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+                           style="-fx-text-fill: #8B7562; -fx-font-size: 13px;"/>
 
                     <Label fx:id="totalOrdersLabel"
                            text="0"
-                           style="-fx-text-fill: #5C3825; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+                           style="-fx-text-fill: #56301F; -fx-font-size: 26px; -fx-font-weight: bold;"/>
                 </VBox>
 
                 <VBox spacing="8"
-                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E8D8C8; -fx-border-radius: 12;"
                       GridPane.columnIndex="1">
 
                     <Label text="Pending Orders"
-                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+                           style="-fx-text-fill: #8B7562; -fx-font-size: 13px;"/>
 
                     <Label fx:id="pendingOrdersLabel"
                            text="0"
@@ -61,11 +62,11 @@
                 </VBox>
 
                 <VBox spacing="8"
-                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 18;"
+                      style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-border-color: #E8D8C8; -fx-border-radius: 12;"
                       GridPane.columnIndex="2">
 
                     <Label text="Completed Orders"
-                           style="-fx-text-fill: #9A7865; -fx-font-size: 13px;"/>
+                           style="-fx-text-fill: #8B7562; -fx-font-size: 13px;"/>
 
                     <Label fx:id="completedOrdersLabel"
                            text="0"
@@ -75,51 +76,52 @@
 
             <HBox alignment="CENTER_LEFT">
                 <Label text="Order List"
-                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #5C3825;"/>
+                       style="-fx-font-size: 19px; -fx-font-weight: bold; -fx-text-fill: #56301F;"/>
 
                 <Region HBox.hgrow="ALWAYS"/>
 
                 <Button text="Refresh"
                         onAction="#handleRefresh"
-                        style="-fx-background-color: #D8C7B8; -fx-text-fill: #5C3825; -fx-background-radius: 7; -fx-padding: 9 18;"/>
+                        style="-fx-background-color: #EFE2D3; -fx-text-fill: #56301F; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #D8C2AD; -fx-border-radius: 8; -fx-padding: 8 18; -fx-cursor: hand;"/>
             </HBox>
 
             <TableView fx:id="orderTable"
-                       VBox.vgrow="ALWAYS"
-                       style="-fx-background-radius: 8;">
-
+                       VBox.vgrow="ALWAYS">
+                <columnResizePolicy>
+                    <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
                 <columns>
                     <TableColumn fx:id="idColumn"
                                  text="ID"
-                                 prefWidth="45"/>
+                                 minWidth="50" prefWidth="60"/>
 
                     <TableColumn fx:id="codeColumn"
                                  text="Order Code"
-                                 prefWidth="115"/>
+                                 minWidth="130" prefWidth="145"/>
 
                     <TableColumn fx:id="customerColumn"
                                  text="Customer"
-                                 prefWidth="130"/>
+                                 minWidth="130" prefWidth="150"/>
 
                     <TableColumn fx:id="dateColumn"
                                  text="Order Date"
-                                 prefWidth="140"/>
+                                 minWidth="145" prefWidth="160"/>
 
                     <TableColumn fx:id="totalColumn"
                                  text="Total Amount"
-                                 prefWidth="115"/>
+                                 minWidth="120" prefWidth="135"/>
 
                     <TableColumn fx:id="paymentColumn"
                                  text="Payment"
-                                 prefWidth="100"/>
+                                 minWidth="135" prefWidth="145"/>
 
                     <TableColumn fx:id="statusColumn"
                                  text="Order Status"
-                                 prefWidth="115"/>
+                                 minWidth="135" prefWidth="145"/>
 
                     <TableColumn fx:id="actionColumn"
                                  text="Action"
-                                 prefWidth="180"/>
+                                 minWidth="195" prefWidth="210"/>
                 </columns>
 
             </TableView>
