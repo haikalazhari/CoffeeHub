@@ -7,8 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
-import com.voidsyntax.coffeehub.enums.OrderStatus;
-import com.voidsyntax.coffeehub.enums.PaymentStatus;
 import com.voidsyntax.coffeehub.model.Order;
 import com.voidsyntax.coffeehub.model.OrderDetail;
 import com.voidsyntax.coffeehub.model.User;
@@ -26,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,7 +34,6 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class AdminController {
 
@@ -559,14 +557,29 @@ public class AdminController {
 
                 Parent loginPage = loader.load();
 
-                Window window = contentArea.getScene().getWindow();
+                Stage stage = (Stage) contentArea.getScene()
+                        .getWindow();
 
-                javafx.scene.Scene scene =
-                        new javafx.scene.Scene(loginPage, 900, 600);
+                // Simpan ukuran Scene sebelumnya
+                Scene oldScene = stage.getScene();
+                double oldWidth = oldScene.getWidth();
+                double oldHeight = oldScene.getHeight();
 
-                ((Stage) window).setScene(scene);
-                ((Stage) window).setTitle("CoffeeHub - Login");
-                ((Stage) window).centerOnScreen();
+                // Simpan status maximized
+                boolean maximized = stage.isMaximized();
+
+                // Ganti ke halaman Login dengan ukuran sebelumnya
+                Scene scene = new Scene(loginPage, oldWidth, oldHeight);
+
+                stage.setScene(scene);
+                stage.setTitle("CoffeeHub - Login");
+
+                // Pulihkan status maximized
+                javafx.application.Platform.runLater(() -> {
+                    if (maximized) {
+                        stage.setMaximized(true);
+                    }
+                });
 
             } catch (IOException e) {
                 e.printStackTrace();

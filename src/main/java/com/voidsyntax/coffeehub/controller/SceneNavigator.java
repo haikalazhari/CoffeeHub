@@ -2,6 +2,7 @@ package com.voidsyntax.coffeehub.controller;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,8 +25,25 @@ public class SceneNavigator {
             Stage stage = (Stage) ((javafx.scene.Node)
                     event.getSource()).getScene().getWindow();
 
-            stage.setScene(new Scene(root));
-            stage.centerOnScreen();
+            // Simpan ukuran Scene sebelumnya
+            Scene oldScene = stage.getScene();
+            double oldWidth = oldScene.getWidth();
+            double oldHeight = oldScene.getHeight();
+
+            // Simpan status window
+            boolean maximized = stage.isMaximized();
+
+            // Buat Scene baru menggunakan ukuran sebelumnya
+            Scene newScene = new Scene(root, oldWidth, oldHeight);
+
+            stage.setScene(newScene);
+
+            // Pulihkan status window setelah pergantian Scene
+            Platform.runLater(() -> {
+                if (maximized) {
+                    stage.setMaximized(true);
+                }
+            });
 
         } catch (IOException | NullPointerException e) {
             System.err.println(

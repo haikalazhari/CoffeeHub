@@ -1,7 +1,7 @@
 # Maven build output
 target/
 
-# Local database configuration (DO NOT UPLOAD)
+# Local database configuration
 database.properties
 
 # Environment and secret files

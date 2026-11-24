@@ -21,14 +21,20 @@ public class Main extends Application {
         Scene scene = new Scene(root, 900, 600);
 
         primaryStage.setTitle("CoffeeHub - Login");
+
         Image appIcon = new Image(
                 getClass().getResourceAsStream("/images/coffeehub-logo.png")
         );
+
         primaryStage.getIcons().add(appIcon);
         primaryStage.setScene(scene);
+
         primaryStage.setMinWidth(700);
         primaryStage.setMinHeight(550);
-        primaryStage.centerOnScreen();
+
+        // Membuka aplikasi dalam kondisi maximized
+        primaryStage.setMaximized(true);
+
         primaryStage.show();
     }
 

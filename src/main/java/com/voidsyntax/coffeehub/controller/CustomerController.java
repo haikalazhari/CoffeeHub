@@ -24,7 +24,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class CustomerController {
 
@@ -369,6 +368,7 @@ public class CustomerController {
 
     @FXML
     private void handleLogout() {
+
         boolean yakin = AlertUtil.konfirmasi(
                 contentArea.getScene().getWindow(),
                 "Konfirmasi Logout",
@@ -387,12 +387,30 @@ public class CustomerController {
                 );
 
                 Parent loginPage = loader.load();
-                Window window = contentArea.getScene().getWindow();
-                Scene scene = new Scene(loginPage, 900, 600);
 
-                ((Stage) window).setScene(scene);
-                ((Stage) window).setTitle("CoffeeHub - Login");
-                ((Stage) window).centerOnScreen();
+                Stage stage = (Stage) contentArea.getScene()
+                        .getWindow();
+
+                // Simpan ukuran Scene sebelumnya
+                Scene oldScene = stage.getScene();
+                double oldWidth = oldScene.getWidth();
+                double oldHeight = oldScene.getHeight();
+
+                // Simpan status maximized
+                boolean maximized = stage.isMaximized();
+
+                // Ganti ke halaman Login dengan ukuran sebelumnya
+                Scene scene = new Scene(loginPage, oldWidth, oldHeight);
+
+                stage.setScene(scene);
+                stage.setTitle("CoffeeHub - Login");
+
+                // Pulihkan status maximized
+                javafx.application.Platform.runLater(() -> {
+                    if (maximized) {
+                        stage.setMaximized(true);
+                    }
+                });
 
             } catch (IOException e) {
                 e.printStackTrace();
