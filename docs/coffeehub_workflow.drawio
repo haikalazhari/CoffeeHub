@@ -1,0 +1,609 @@
+<mxfile host="app.diagrams.net" pages="3">
+  <!-- TAB 1: WORKFLOW OPERASIONAL PEMESANAN & KASIR -->
+  <diagram name="1. Workflow Pemesanan &amp; Kasir" id="wf_order_cashier">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1250" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Banner -->
+        <mxCell id="hdr_tab1" value="&lt;b&gt;WORKFLOW OPERASIONAL PEMESANAN &amp;amp; KASIR COFFEEHUB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; font-weight: normal;&quot;&gt;Alur Kerja End-to-End: Pemilihan Menu &amp;rarr; Validasi Sistem &amp;rarr; Peracikan Barista &amp;rarr; Pembayaran Kasir &amp;rarr; Penyerahan Produk&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C1A11;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontFamily=Segoe UI, Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1020" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Pool Container -->
+        <mxCell id="pool_ops" value="CoffeeHub | Alur Kerja Operasional Kedai Kopi" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=30;horizontal=0;horizontalStack=1;fillColor=#3E2723;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1020" height="1130" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 1: Pelanggan -->
+        <mxCell id="lane_cust" value="Pelanggan (Customer)" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_ops">
+          <mxGeometry x="30" y="0" width="240" height="1130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_start" value="" style="ellipse;html=1;shape=startState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_cust">
+          <mxGeometry x="105" y="45" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act1" value="Jelajah Katalog Menu &amp;amp;&lt;br&gt;Pilih Produk Kopi / Snack" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="100" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_doc1" value="&lt;b&gt;Keranjang Belanja&lt;/b&gt;&lt;br&gt;(Item, Qty, Catatan)" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=middle;fillColor=#EFEBE9;strokeColor=#8D6E63;fontColor=#3E2723;fontSize=10;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="50" y="170" width="140" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act2" value="Checkout Pesanan &amp;amp;&lt;br&gt;Pilih Metode Tunai (Kasir)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="240" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act3" value="Menerima Alert Pesan:&lt;br&gt;&lt;font color=&quot;#C62828&quot;&gt;&lt;b&gt;Stok Tidak Mencukupi&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFEBEE;strokeColor=#E53935;strokeWidth=1.5;fontColor=#B71C1C;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="380" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act4" value="Menuju ke Meja Kasir &amp;amp;&lt;br&gt;Menyebutkan ID Pesanan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="700" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act5" value="Menyerahkan Uang Tunai&lt;br&gt;Sesuai Total Tagihan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="775" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_act6" value="Menerima Produk Minuman,&lt;br&gt;Kembalian &amp;amp; Struk Pembayaran" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E8F5E9;strokeColor=#43A047;strokeWidth=1.5;fontColor=#1B5E20;fontSize=11;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cust">
+          <mxGeometry x="35" y="1000" width="170" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cust_end" value="" style="ellipse;html=1;shape=endState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_cust">
+          <mxGeometry x="105" y="1075" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 2: Sistem CoffeeHub -->
+        <mxCell id="lane_sys" value="Sistem CoffeeHub (Aplikasi &amp;amp; DB)" style="swimlane;startSize=30;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_ops">
+          <mxGeometry x="270" y="0" width="260" height="1130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_act1" value="Validasi Kuantitas &amp;amp;&lt;br&gt;Ketersediaan Stok di Database" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="40" y="240" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_dec1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFA000;strokeWidth=1.5;" vertex="1" parent="lane_sys">
+          <mxGeometry x="110" y="315" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_act2" value="Reservasi Stok Produk &amp;amp;&lt;br&gt;Buat Record Pesanan Baru&lt;br&gt;&lt;b&gt;Status: MENUNGGU&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#E65100&quot;&gt;Bayar: BELUM_BAYAR&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFF3E0;strokeColor=#FB8C00;strokeWidth=1.5;fontColor=#E65100;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="35" y="380" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_doc1" value="&lt;b&gt;Tiket Pesanan Masuk&lt;/b&gt;&lt;br&gt;#ORD-XXXX (Antrian)" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=middle;fillColor=#E1F5FE;strokeColor=#03A9F4;fontColor=#01579B;fontSize=10;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="55" y="475" width="150" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_act3" value="Pembaruan Status Realtime:&lt;br&gt;&lt;b&gt;Status: DIPROSES&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="45" y="555" width="170" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_act4" value="Pembaruan Status Siap:&lt;br&gt;&lt;b&gt;&lt;font color=&quot;#1565C0&quot;&gt;Status: SIAP (Ambil)&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E3F2FD;strokeColor=#1E88E5;strokeWidth=1.5;fontColor=#0D47A1;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="45" y="635" width="170" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sys_act5" value="Update Data Transaksi Final:&lt;br&gt;&lt;b&gt;&amp;bull; status_bayar = LUNAS&lt;/b&gt;&lt;br&gt;&lt;b&gt;&amp;bull; status = SELESAI&lt;/b&gt;&lt;br&gt;Catat Log Pendapatan Harian" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E8F5E9;strokeColor=#43A047;strokeWidth=1.5;fontColor=#1B5E20;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_sys">
+          <mxGeometry x="35" y="915" width="190" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 3: Barista / Dapur -->
+        <mxCell id="lane_barista" value="Barista / Dapur Produksi" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_ops">
+          <mxGeometry x="530" y="0" width="230" height="1130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bar_act1" value="Terima Notifikasi Pesanan &amp;amp;&lt;br&gt;Klik &lt;b&gt;&quot;Proses Pesanan&quot;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_barista">
+          <mxGeometry x="30" y="475" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bar_act2" value="Meracik Kopi / Minuman &amp;amp;&lt;br&gt;Siapkan Makanan Sesuai Resep" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_barista">
+          <mxGeometry x="30" y="550" width="170" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bar_act3" value="Quality Check Rasa &amp;amp;&lt;br&gt;Kemas Minuman (Cup/Lid)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_barista">
+          <mxGeometry x="30" y="630" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bar_act4" value="Klik &lt;b&gt;&quot;Pesanan Siap&quot;&lt;/b&gt; &amp;amp;&lt;br&gt;Pindahkan ke Counter Ambil" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_barista">
+          <mxGeometry x="30" y="700" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 4: Kasir / Admin -->
+        <mxCell id="lane_cashier" value="Kasir / Admin (Point of Sale)" style="swimlane;startSize=30;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_ops">
+          <mxGeometry x="760" y="0" width="230" height="1130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_act1" value="Cari Pesanan Pelanggan di&lt;br&gt;Tabel Antrian Kasir" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="30" y="700" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_act2" value="Input Nominal Uang Tunai &amp;amp;&lt;br&gt;Hitung Nilai Kembalian" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="30" y="775" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_dec1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFA000;strokeWidth=1.5;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="95" y="845" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_act3" value="Klik &lt;b&gt;&quot;Konfirmasi Bayar&quot;&lt;/b&gt;&lt;br&gt;(Transaksi Selesai)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="30" y="915" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_doc1" value="&lt;b&gt;Struk Pembayaran&lt;/b&gt;&lt;br&gt;(Invoice Cetak/Fisik)" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=middle;fillColor=#EDE7F6;strokeColor=#5E35B1;fontColor=#311B92;fontSize=10;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="40" y="990" width="150" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cas_act4" value="Serahkan Minuman, Kembalian&lt;br&gt;&amp;amp; Struk kepada Pelanggan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cashier">
+          <mxGeometry x="30" y="1060" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS TAB 1 -->
+        <!-- Cust Start to Act1 -->
+        <mxCell id="c_cust_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cust_start" target="cust_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cust Act1 to Doc1 -->
+        <mxCell id="c_cust_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cust_act1" target="cust_doc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cust Doc1 to Act2 -->
+        <mxCell id="c_cust_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cust_doc1" target="cust_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cust Act2 to Sys Act1 -->
+        <mxCell id="c_cust_to_sys" value="Submit Pesanan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cust_act2" target="sys_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Sys Act1 to Dec1 -->
+        <mxCell id="c_sys_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="sys_act1" target="sys_dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Sys Dec1 to Cust Act3 [Stok Kurang] -->
+        <mxCell id="c_sys_stok_habis" value="[Stok Kurang]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.5;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="sys_dec1" target="cust_act3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="445" />
+              <mxPoint x="190" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Cust Act3 to Cust Act1 (Kembali Pilih) -->
+        <mxCell id="c_cust_reorder" value="Ubah Qty / Menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.2;dashed=1;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cust_act3" target="cust_act1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="480" />
+              <mxPoint x="90" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Sys Dec1 to Sys Act2 [Stok Cukup] -->
+        <mxCell id="c_sys_stok_cukup" value="[Stok Cukup]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="sys_dec1" target="sys_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Sys Act2 to Doc1 -->
+        <mxCell id="c_sys_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="sys_act2" target="sys_doc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Sys Doc1 to Barista Act1 -->
+        <mxCell id="c_sys_to_barista" value="Kirim Antrian Tiket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0288D1;strokeWidth=1.5;fontColor=#0288D1;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="sys_doc1" target="bar_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Barista Act1 to Sys Act3 -->
+        <mxCell id="c_bar_to_sys1" value="Update Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.2;dashed=1;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="bar_act1" target="sys_act3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="615" />
+              <mxPoint x="495" y="615" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Barista Act1 to Act2 -->
+        <mxCell id="c_bar_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="bar_act1" target="bar_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Barista Act2 to Act3 -->
+        <mxCell id="c_bar_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="bar_act2" target="bar_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Barista Act3 to Act4 -->
+        <mxCell id="c_bar_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="bar_act3" target="bar_act4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Barista Act4 to Sys Act4 -->
+        <mxCell id="c_bar_to_sys2" value="Notif Pesanan Siap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#1565C0;strokeWidth=1.2;dashed=1;fontColor=#1565C0;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="bar_act4" target="sys_act4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="655" y="795" />
+              <mxPoint x="495" y="795" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Sys Act4 to Cust Act4 & Cashier Act1 -->
+        <mxCell id="c_sys_to_cust4" value="Pemberitahuan Siap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="sys_act4" target="cust_act4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="745" />
+              <mxPoint x="200" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c_sys_to_cas1" value="Muncul di Antrian Kasir" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="sys_act4" target="cas_act1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="495" y="745" />
+              <mxPoint x="885" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Cust Act4 to Act5 -->
+        <mxCell id="c_cust_4_to_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cust_act4" target="cust_act5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cust Act5 to Cashier Act2 -->
+        <mxCell id="c_cust_to_cas_pay" value="Serahkan Uang Tunai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cust_act5" target="cas_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Act1 to Act2 -->
+        <mxCell id="c_cas_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cas_act1" target="cas_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Act2 to Dec1 -->
+        <mxCell id="c_cas_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cas_act2" target="cas_dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Dec1 to Cust Act5 [Uang Kurang] -->
+        <mxCell id="c_cas_kurang" value="[Uang Kurang]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.5;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cas_dec1" target="cust_act5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="885" />
+              <mxPoint x="230" y="885" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Cashier Dec1 to Act3 [Uang Cukup] -->
+        <mxCell id="c_cas_cukup" value="[Uang Cukup / Pas]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cas_dec1" target="cas_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Act3 to Sys Act5 -->
+        <mxCell id="c_cas_to_sys_finalize" value="Commit Transaksi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cas_act3" target="sys_act5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="1025" />
+              <mxPoint x="500" y="1025" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Cashier Act3 to Doc1 (Struk) -->
+        <mxCell id="c_cas_3" value="Generate Struk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5E35B1;strokeWidth=1.5;fontColor=#5E35B1;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cas_act3" target="cas_doc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Doc1 to Act4 -->
+        <mxCell id="c_cas_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cas_doc1" target="cas_act4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cashier Act4 to Cust Act6 -->
+        <mxCell id="c_cas_to_cust_handover" value="Penyerahan Pesanan &amp;amp; Struk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.8;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cas_act4" target="cust_act6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Cust Act6 to End -->
+        <mxCell id="c_cust_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cust_act6" target="cust_end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- TAB 2: WORKFLOW MANAJEMEN RANTAI STOK & INVENTARIS -->
+  <diagram name="2. Workflow Rantai Stok" id="wf_inventory">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="950" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Banner -->
+        <mxCell id="hdr_tab2" value="&lt;b&gt;WORKFLOW MANAJEMEN RANTAI STOK &amp;amp; INVENTARIS COFFEEHUB&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; font-weight: normal;&quot;&gt;Alur Kerja: Deteksi Stok Kritis &amp;rarr; Pengadaan Pemasok &amp;rarr; Restock Dashboard &amp;rarr; Real-Time Sinkronisasi Katalog&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C1A11;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontFamily=Segoe UI, Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="870" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Pool Container -->
+        <mxCell id="pool_stk" value="CoffeeHub | Alur Kerja Manajemen Stok Produk" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=30;horizontal=0;horizontalStack=1;fillColor=#3E2723;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="870" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 1: Admin / Staff Gudang -->
+        <mxCell id="lane_stk_admin" value="Admin / Staf Gudang" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_stk">
+          <mxGeometry x="30" y="0" width="270" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act1" value="Menerima Alert Notifikasi:&lt;br&gt;&lt;font color=&quot;#C62828&quot;&gt;&lt;b&gt;Stok Kritis / Habis (&amp;le; 5)&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFEBEE;strokeColor=#E53935;strokeWidth=1.5;fontColor=#B71C1C;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="110" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act2" value="Buat Purchase Order (PO) &amp;amp;&lt;br&gt;Ajukan Pesanan ke Supplier" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="190" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act3" value="Pemeriksaan Fisik Barang Datang&lt;br&gt;(Kualitas Biji Kopi / Bahan Baku)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="380" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_dec1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFA000;strokeWidth=1.5;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="115" y="455" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act4" value="Klaim Retur / Penggantian&lt;br&gt;Bahan Rusak ke Pemasok" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFEBEE;strokeColor=#E53935;strokeWidth=1.5;fontColor=#B71C1C;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="525" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act5" value="Buka Menu &lt;b&gt;Manajemen Stok&lt;/b&gt;&lt;br&gt;di Dashboard CoffeeHub Admin" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="605" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_act6" value="Input Jumlah Stok Tambahan&lt;br&gt;pada Modal Restock Produk" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="40" y="685" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_adm_end" value="" style="ellipse;html=1;shape=endState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_stk_admin">
+          <mxGeometry x="120" y="845" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 2: Pemasok / Supplier -->
+        <mxCell id="lane_stk_supplier" value="Pemasok Bahan (Supplier)" style="swimlane;startSize=30;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_stk">
+          <mxGeometry x="300" y="0" width="260" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sup_act1" value="Terima Pesanan PO &amp;amp;&lt;br&gt;Siapkan Batch Bahan Baku" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_supplier">
+          <mxGeometry x="40" y="190" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sup_doc1" value="&lt;b&gt;Surat Jalan &amp;amp; Invoice&lt;/b&gt;&lt;br&gt;Pemasok Biji Kopi/Susu" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=middle;fillColor=#EFEBE9;strokeColor=#8D6E63;fontColor=#3E2723;fontSize=10;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_supplier">
+          <mxGeometry x="50" y="270" width="160" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sup_act2" value="Pengiriman Bahan Baku Fisik&lt;br&gt;ke Outlet CoffeeHub" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_supplier">
+          <mxGeometry x="40" y="345" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 3: Sistem CoffeeHub -->
+        <mxCell id="lane_stk_sys" value="Sistem CoffeeHub (DB &amp;amp; Backend)" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_stk">
+          <mxGeometry x="560" y="0" width="280" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sys_start" value="" style="ellipse;html=1;shape=startState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_stk_sys">
+          <mxGeometry x="125" y="45" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sys_act1" value="Monitoring Stok Realtime:&lt;br&gt;&lt;b&gt;SELECT stok FROM products&lt;/b&gt;&lt;br&gt;Kondisi: stok &amp;le; 5" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_sys">
+          <mxGeometry x="45" y="105" width="190" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sys_act2" value="Validasi Input Jumlah Positif&lt;br&gt;&amp;amp; Jalankan Query UPDATE:&lt;br&gt;&lt;font color=&quot;#1B5E20&quot;&gt;&lt;b&gt;stok = stok + jumlah_baru&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E8F5E9;strokeColor=#43A047;strokeWidth=1.5;fontColor=#1B5E20;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_sys">
+          <mxGeometry x="45" y="680" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stk_sys_act3" value="Perbarui Tampilan Katalog&lt;br&gt;Pelanggan secara Realtime &amp;amp;&lt;br&gt;Hilangkan Label &quot;Habis&quot;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_stk_sys">
+          <mxGeometry x="45" y="765" width="190" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS TAB 2 -->
+        <mxCell id="c_stk_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_sys_start" target="stk_sys_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_1" value="Kirim Alert Kritis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.5;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_sys_act1" target="stk_adm_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_adm_act1" target="stk_adm_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_3" value="Kirim Dokumen PO" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_adm_act2" target="stk_sup_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_sup_act1" target="stk_sup_doc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_sup_doc1" target="stk_sup_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_6" value="Pengiriman Fisik" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_sup_act2" target="stk_adm_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_adm_act3" target="stk_adm_dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_8" value="[Cacat / Rusak]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.5;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_adm_dec1" target="stk_adm_act4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_9" value="Retur Barang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.2;dashed=1;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_adm_act4" target="stk_sup_act1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="165" y="615" />
+              <mxPoint x="20" y="615" />
+              <mxPoint x="20" y="290" />
+              <mxPoint x="460" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c_stk_10" value="[Sesuai / Lulus QC]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_adm_dec1" target="stk_adm_act5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="575" />
+              <mxPoint x="260" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c_stk_11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_adm_act5" target="stk_adm_act6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_12" value="Simpan Restock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_adm_act6" target="stk_sys_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="stk_sys_act2" target="stk_sys_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_stk_14" value="Konfirmasi Selesai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="stk_sys_act3" target="stk_adm_end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="940" />
+              <mxPoint x="195" y="940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- TAB 3: WORKFLOW PENUTUPAN KASIR & AUDIT OMZET -->
+  <diagram name="3. Workflow Rekonsiliasi &amp; Closing" id="wf_closing">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="950" pageHeight="1050" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Banner -->
+        <mxCell id="hdr_tab3" value="&lt;b&gt;WORKFLOW PENUTUPAN KASIR (CLOSING SHIFT) &amp;amp; AUDIT OMZET&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; font-weight: normal;&quot;&gt;Alur Kerja: Penghitungan Kas Fisik &amp;rarr; Agregasi Transaksi Sistem &amp;rarr; Rekonsiliasi Selisih &amp;rarr; Laporan Finansial Owner&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2C1A11;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontFamily=Segoe UI, Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="870" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Pool Container -->
+        <mxCell id="pool_cls" value="CoffeeHub | Alur Kerja Penutupan Kasir &amp;amp; Rekonsiliasi Finansial" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=30;horizontal=0;horizontalStack=1;fillColor=#3E2723;strokeColor=#1A0F0A;fontColor=#FFFFFF;fontSize=13;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="870" height="920" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 1: Kasir Petugas Shift -->
+        <mxCell id="lane_cls_cashier" value="Petugas Kasir (Shift Selesai)" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_cls">
+          <mxGeometry x="30" y="0" width="270" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_start" value="" style="ellipse;html=1;shape=startState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="120" y="45" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act1" value="Pastikan Seluruh Antrian&lt;br&gt;Pesanan Berstatus &lt;b&gt;SELESAI&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="105" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act2" value="Hitung Total Uang Tunai Fisik&lt;br&gt;di Laci Kasir (&lt;i&gt;Cash Drawer&lt;/i&gt;)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="180" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act3" value="Akses Menu &lt;b&gt;Laporan Kasir&lt;/b&gt;&lt;br&gt;di Aplikasi CoffeeHub" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="255" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act4" value="Bandingkan Kas Fisik vs&lt;br&gt;Total Penjualan Sistem" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="445" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_dec1" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFA000;strokeWidth=1.5;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="115" y="525" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act5" value="Tulis Catatan Keterangan&lt;br&gt;Penyebab Selisih Uang Kas" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFEBEE;strokeColor=#E53935;strokeWidth=1.5;fontColor=#B71C1C;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="595" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_cas_act6" value="Cetak Dokumen &lt;b&gt;Rekap Penjualan&lt;/b&gt;&lt;br&gt;&amp;amp; Setorkan Kas Fisik ke Owner" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_cashier">
+          <mxGeometry x="40" y="675" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 2: Sistem CoffeeHub Reporting -->
+        <mxCell id="lane_cls_sys" value="Sistem CoffeeHub (Reporting Engine)" style="swimlane;startSize=30;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_cls">
+          <mxGeometry x="300" y="0" width="280" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_sys_act1" value="Query Agregasi Penjualan Shift:&lt;br&gt;&lt;b&gt;SUM(total_harga)&lt;/b&gt; WHERE&lt;br&gt;status_bayar = &#39;LUNAS&#39; AND&lt;br&gt;DATE(created_at) = CURDATE()" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_sys">
+          <mxGeometry x="40" y="255" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_sys_doc1" value="&lt;b&gt;Laporan Omzet Harian&lt;/b&gt;&lt;br&gt;&amp;bull; Total Transaksi&lt;br&gt;&amp;bull; Total Penerimaan Kas&lt;br&gt;&amp;bull; Item Terlaris (Best Seller)" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=middle;fillColor=#EDE7F6;strokeColor=#5E35B1;fontColor=#311B92;fontSize=10;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_sys">
+          <mxGeometry x="45" y="355" width="190" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_sys_act2" value="Kunci Periode Transaksi Shift&lt;br&gt;(&lt;i&gt;Freeze / Close Register Session&lt;/i&gt;)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E8F5E9;strokeColor=#43A047;strokeWidth=1.5;fontColor=#1B5E20;fontSize=11;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_sys">
+          <mxGeometry x="45" y="675" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Lane 3: Admin / Owner -->
+        <mxCell id="lane_cls_owner" value="Pemilik Kedai (Owner / Manajer)" style="swimlane;startSize=30;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="pool_cls">
+          <mxGeometry x="580" y="0" width="260" height="920" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_own_act1" value="Menerima Uang Fisik Kasir &amp;amp;&lt;br&gt;Validasi Lembar Rekapitulasi" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_owner">
+          <mxGeometry x="35" y="675" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_own_act2" value="Tanda Tangan Serah Terima Kas&lt;br&gt;&amp;amp; Simpan Uang di Brankas Utama" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_owner">
+          <mxGeometry x="35" y="755" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_own_act3" value="Arsip Laporan Keuangan Harian&lt;br&gt;untuk Pembukuan Bulanan" style="rounded=1;whiteSpace=wrap;html=1;arcSize=20;fillColor=#E8F5E9;strokeColor=#43A047;strokeWidth=1.5;fontColor=#1B5E20;fontSize=11;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="lane_cls_owner">
+          <mxGeometry x="35" y="830" width="190" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls_own_end" value="" style="ellipse;html=1;shape=endState;fillColor=#2C1A11;strokeColor=#2C1A11;" vertex="1" parent="lane_cls_owner">
+          <mxGeometry x="115" y="900" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS TAB 3 -->
+        <mxCell id="c_cls_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_cas_start" target="cls_cas_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_cas_act1" target="cls_cas_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_cas_act2" target="cls_cas_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_3" value="Request Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_cas_act3" target="cls_sys_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_sys_act1" target="cls_sys_doc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_5" value="Tampilkan Ringkasan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#5E35B1;strokeWidth=1.5;fontColor=#5E35B1;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_sys_doc1" target="cls_cas_act4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_cas_act4" target="cls_cas_dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_7" value="[Terdapat Selisih (+/-)]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#C62828;strokeWidth=1.5;fontColor=#C62828;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_cas_dec1" target="cls_cas_act5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_cas_act5" target="cls_cas_act6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_9" value="[Kas Cocok / Balanced]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_cas_dec1" target="cls_cas_act6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="645" />
+              <mxPoint x="260" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c_cls_10" value="Tutup Sesi Kasir" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2E7D32;strokeWidth=1.5;fontColor=#2E7D32;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_cas_act6" target="cls_sys_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_11" value="Serah Terima Kas &amp;amp; Rekap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=10;fontFamily=Segoe UI, Arial;" edge="1" parent="1" source="cls_cas_act6" target="cls_own_act1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="165" y="820" />
+              <mxPoint x="745" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c_cls_12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_own_act1" target="cls_own_act2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_own_act2" target="cls_own_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cls_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4E342E;strokeWidth=1.5;" edge="1" parent="1" source="cls_own_act3" target="cls_own_end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

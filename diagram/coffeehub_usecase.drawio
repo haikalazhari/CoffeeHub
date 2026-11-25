@@ -1,0 +1,224 @@
+<mxfile host="app.diagrams.net" modified="2026-11-24T08:25:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="coffeehub-usecase" name="Use Case Diagram CoffeeHub">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1420" pageHeight="920" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ================= SYSTEM BOUNDARY ================= -->
+        <mxCell id="system_boundary" value="&lt;b style=&quot;font-size:16px; color:#3E2723;&quot;&gt;Sistem CoffeeHub&lt;/b&gt;" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=#FAF8F5;strokeColor=#4E342E;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=25;spacingTop=15;fontFamily=Segoe UI, Arial, sans-serif;" vertex="1" parent="1">
+          <mxGeometry x="210" y="40" width="1000" height="830" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ACTOR: ADMIN (LEFT) ================= -->
+        <mxCell id="actor_admin" value="&lt;b&gt;Admin&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EFEBE9;strokeColor=#4E342E;strokeWidth=2;fontColor=#2C1A11;fontSize=14;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="90" y="240" width="55" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ACTOR: PELANGGAN (RIGHT) ================= -->
+        <mxCell id="actor_customer" value="&lt;b&gt;Pelanggan&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EFEBE9;strokeColor=#4E342E;strokeWidth=2;fontColor=#2C1A11;fontSize=14;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="1275" y="240" width="55" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- ================= TOP CENTER: AUTENTIKASI & AKUN ================= -->
+        <!-- Lupa Password (extends Login) -->
+        <mxCell id="uc_forgot_pwd" value="Lupa Password" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6D4C41;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="160" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Melakukan Login -->
+        <mxCell id="uc_login" value="Melakukan Login" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=2;fontColor=#2C1A11;fontSize=13;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="180" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Registrasi Akun -->
+        <mxCell id="uc_register" value="Registrasi Akun" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6D4C41;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="870" y="80" width="160" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Mengelola Profil -->
+        <mxCell id="uc_profile" value="Mengelola Profil" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="620" y="150" width="180" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ADMIN USE CASES (LEFT SIDE) ================= -->
+        <!-- Dashboard Admin -->
+        <mxCell id="uc_adm_dash" value="Melihat Dashboard Admin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="240" width="200" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Kelola Kategori -->
+        <mxCell id="uc_adm_cat" value="Mengelola Kategori Produk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="320" width="200" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Kelola Produk -->
+        <mxCell id="uc_adm_prod" value="Mengelola Data Produk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="400" width="200" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Kelola Stok -->
+        <mxCell id="uc_adm_stock" value="Mengelola Stok Produk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="480" width="200" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Kelola Pesanan -->
+        <mxCell id="uc_adm_ord" value="Mengelola Pesanan Pelanggan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="560" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Memperbarui Status Pesanan (included by Kelola Pesanan) -->
+        <mxCell id="uc_update_status" value="Memperbarui Status Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8D6E63;strokeWidth=1.2;fontColor=#3E2723;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="495" y="560" width="195" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Kelola Pembayaran Kasir -->
+        <mxCell id="uc_adm_pay" value="Mengelola Pembayaran Kasir" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="250" y="650" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Konfirmasi Pembayaran Lunas (included by Kelola Pembayaran) -->
+        <mxCell id="uc_confirm_lunas" value="Konfirmasi Pembayaran Lunas" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8D6E63;strokeWidth=1.2;fontColor=#3E2723;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="495" y="650" width="195" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ================= PELANGGAN USE CASES (RIGHT SIDE) ================= -->
+        <!-- Dashboard Pelanggan -->
+        <mxCell id="uc_cust_dash" value="Melihat Dashboard Pelanggan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="965" y="240" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Melihat Detail Produk (extends Melihat Katalog) -->
+        <mxCell id="uc_prod_detail" value="Melihat Rincian Detail Menu" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8D6E63;strokeWidth=1.2;fontColor=#3E2723;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="725" y="320" width="195" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Melihat Katalog Produk -->
+        <mxCell id="uc_browse_cat" value="Melihat Katalog Produk" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="965" y="320" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Mengelola Keranjang Belanja -->
+        <mxCell id="uc_cart" value="Mengelola Keranjang Belanja" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="965" y="420" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Konfirmasi Pembayaran Tunai (included by Checkout) -->
+        <mxCell id="uc_cash_confirm" value="Konfirmasi Pembayaran Tunai" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8D6E63;strokeWidth=1.2;fontColor=#3E2723;fontSize=11;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="725" y="520" width="195" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Melakukan Checkout Pesanan -->
+        <mxCell id="uc_checkout" value="Melakukan Checkout Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="965" y="520" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Melihat Riwayat Pesanan -->
+        <mxCell id="uc_ord_history" value="Melihat Riwayat Pesanan" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="965" y="620" width="205" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ================= BOTTOM CENTER: LOGOUT ================= -->
+        <!-- Melakukan Logout -->
+        <mxCell id="uc_logout" value="Melakukan Logout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4E342E;strokeWidth=1.5;fontColor=#2C1A11;fontSize=12;fontStyle=1;fontFamily=Segoe UI, Arial;" vertex="1" parent="1">
+          <mxGeometry x="620" y="740" width="180" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ACTOR ASSOCIATIONS (ADMIN) ================= -->
+        <!-- Direct clean lines from Admin -->
+        <mxCell id="edge_adm_login" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_profile" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_dash" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_dash">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_cat" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_cat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_prod" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_prod">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_stock" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_stock">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_ord" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0.8;exitY=0.9;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_ord">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_pay" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_adm_pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_logout" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_admin" target="uc_logout">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="117" y="764" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================= ACTOR ASSOCIATIONS (PELANGGAN) ================= -->
+        <!-- Direct clean lines from Pelanggan -->
+        <mxCell id="edge_cust_reg" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_register">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_login" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_profile" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.45;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_dash" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_cust_dash">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_browse" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_browse_cat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_cart" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_cart">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_checkout" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_checkout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_history" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0.2;exitY=0.9;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_ord_history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cust_logout" style="endArrow=none;html=1;rounded=0;strokeWidth=1.5;strokeColor=#4E342E;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor_customer" target="uc_logout">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1302" y="764" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================= <<EXTEND>> & <<INCLUDE>> RELATIONSHIPS ================= -->
+        <!-- Lupa Password extends Melakukan Login -->
+        <mxCell id="rel_extend_pwd" value="&amp;laquo;extend&amp;raquo;" style="dashed=1;endArrow=open;html=1;strokeWidth=1.2;strokeColor=#6D4C41;fontColor=#4E342E;fontSize=11;fontFamily=Segoe UI;endSize=7;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_forgot_pwd" target="uc_login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Melihat Detail Produk extends Melihat Katalog Produk -->
+        <mxCell id="rel_extend_detail" value="&amp;laquo;extend&amp;raquo;" style="dashed=1;endArrow=open;html=1;strokeWidth=1.2;strokeColor=#6D4C41;fontColor=#4E342E;fontSize=11;fontFamily=Segoe UI;endSize=7;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_prod_detail" target="uc_browse_cat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Mengelola Pesanan includes Memperbarui Status Pesanan -->
+        <mxCell id="rel_include_status" value="&amp;laquo;include&amp;raquo;" style="dashed=1;endArrow=open;html=1;strokeWidth=1.2;strokeColor=#6D4C41;fontColor=#4E342E;fontSize=11;fontFamily=Segoe UI;endSize=7;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_adm_ord" target="uc_update_status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Mengelola Pembayaran Kasir includes Konfirmasi Pembayaran Lunas -->
+        <mxCell id="rel_include_lunas" value="&amp;laquo;include&amp;raquo;" style="dashed=1;endArrow=open;html=1;strokeWidth=1.2;strokeColor=#6D4C41;fontColor=#4E342E;fontSize=11;fontFamily=Segoe UI;endSize=7;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_adm_pay" target="uc_confirm_lunas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Melakukan Checkout includes Konfirmasi Pembayaran Tunai -->
+        <mxCell id="rel_include_checkout" value="&amp;laquo;include&amp;raquo;" style="dashed=1;endArrow=open;html=1;strokeWidth=1.2;strokeColor=#6D4C41;fontColor=#4E342E;fontSize=11;fontFamily=Segoe UI;endSize=7;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uc_checkout" target="uc_cash_confirm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
